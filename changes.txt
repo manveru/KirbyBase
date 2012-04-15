@@ -1,0 +1,144 @@
+2006-06-27:: Version 2.6
+* Removed NilClass#method_missing.  I have replaced it with a new class
+  called KBNilClass.  Thanks to a host of people for help on this,
+  including:  Assaph Mehr, James Edward Gray II, Matthew Desmarais,
+  Logan Capaldo, Trans, John Carter, Dave Burt and anyone else I missed.
+* Added conditional require logic so that KirbyBase will use FasterCVS if
+  it is available.  Thanks to James Edward Gray II for this.
+* You can now delay index creation in local mode.  Thanks to Nicholas Rahn
+  for this.
+* Added ability to allow for a custom record class with no kb_create or
+  kb_defaults methods.  KirbyBase will return each result record as an
+  instance of the custom record class, and will attempt to set attributes
+  with the same names as the table's field names equal to the values of
+  the table record's fields.  Thanks to Hal Fulton for this idea.
+
+2005-12-30:: Version 2.5.2
+* Changed the behavior of KBTable#insert method.  If user specifies nil
+  for a field value and there is a default value for that field, the
+  default value will no longer override the user specified nil value.
+  Thanks to Assaph Mehr for suggesting this.
+
+2005-12-28:: Version 2.5.1
+* Fixed a bug that had broken encrypted tables.
+* Changed KBTable#pack method so that it raises an error if trying to
+  execute when :connect_type==:client.
+* Fixed a bug where it was possible to insert records missing a required
+  field if using a hash.  Thanks to Adam Shelly for this.
+* Fixed a bug that occurred when you tried to update records using a
+  block and you tried to reference a field in the current record inside
+  the block.  Much thanks to Assaph Mehr for reporting this.
+* Fixed a bug that allowed you to have duplicate column names.  Thanks to
+  Assaph Mehr for spotting this.
+* Changed the way KBTable#set works with memo/blob fields.
+* Started creating unit tests.
+* Changed the KBTable#clear method to return number of records deleted.
+  Thanks to Assaph Mehr for this enhancement.
+* Moved #build_header_string from KBEngine class to KirbyBase class.
+* Added KirbyBase::VERSION constant.
+
+2005-12-01:: Version 2.5
+* Fixed a subtle bug in KBTable#create_indexes.
+* Added the following new methods to KBTable:  add_index, drop_index,
+  rename_column, change_column_type, change_column_default_value, and
+  change_column_required.
+* Added the ability to specify a default column value at table creation
+  time.
+* Added the ability to specify, at table creation time, that a column value 
+  is required when inserting or updating records.
+* Removed #add_table_column and #drop_table_column from KirbyBase class
+  and added #add_column and #drop_column to KBTable class.  I felt like
+  it made more sense to have these methods in the table's class rather
+  than the database's class.
+* Added KirbyBase#rename_table method.
+* Added the ability to, upon database initialization, specify that index
+  creation should not happen until a table is actually opened.  This
+  speeds up database initialization at the cost of slower table
+  initialization later.
+
+2005-11-13:: Version 2.4
+* Added a new column type: :Time.  Thanks to George Moschovitis for coding
+  this enhancement.
+* Added more functionality to Memo and Blob fields.  They are no longer
+  just read-only.  You can now also write to them from KirbyBase.  The
+  interface for Memo and Blob fields has changed because of this.
+* Added the ability to specify, when you initialize a database connection,
+  a base directory where memo/blob fields will be stored.
+* Changed the way indexes are handled by KBTable in client/server mode.
+  Now, when KBTable grabs an index from KBEngine, it will hold onto it and
+  re-use it unless it has been modified since the last time it grabbed it.
+  This speeds up subsequent queries on the same index.
+* Removed the restriction that the child table had to exist before you
+  could define a Link_many field in #create_table.  I did this so that
+  it would possible to now define many-to-many links.  See the example in
+  the distribution.  This also goes for Lookup fields.
+* Added two sample scripts:  kbserverctl.rb and kbserver_daemon.rb, that
+  show how to set up a KirbyBase server process as a Windows Service.
+  Thanks to Daniel Berger for his excellent package, win32-service.
+* Thouroughly revised the manual.  I used the excellent text document
+  formatter, AsciiDoc.  Many thanks to Stuart Rackham for developing this
+  great tool.
+* Fixed a bug in KBTable#clear that was causing the recno counter not to
+  be reset.  Thanks to basi for this.
+
+2005-10-10:: Version 2.3 
+* Added ability to specify lookup fields.
+* Added ability to specify one-to-many links between tables.
+* Added ability to specify calculated fields in tables.
+* Added Memo and Blob field types.
+* Added YAML field type.  Many thanks to Logan Capaldo for this idea!
+* Added indexing to speed up queries.
+* Two new methods:  #add_table_column and #drop_table_column.
+* Added the ability to designate a table field as the "key" field, for
+  Lookup purposes.  This simply makes it easier to define Lookup fields.
+* Added "crosstab" capabilities to KBResultSet.
+
+2005-08-09:: Version 2.2.1
+* Fixed a bug in with_write_lock.  Thanks to Zed A. Shaw for this bugfix.
+* Fixed a bug that occurred if @record_class was a nested class.  Thanks
+  to Hal Fulton for this bugfix.
+
+2005-05-02:: Version 2.2
+* By far the biggest change in this version is that I have completely
+  redesigned the internal structure of the database code.  Because the
+  KirbyBase and KBTable classes were too tightly coupled, I have created
+  a KBEngine class and moved all low-level I/O logic and locking logic
+  to this class.  This allowed me to restructure the KirbyBase class to
+  remove all of the methods that should have been private, but couldn't be
+  because of the coupling to KBTable.  In addition, it has allowed me to
+  take all of the low-level code that should not have been in the KBTable
+  class and put it where it belongs, as part of the underlying engine.  I
+  feel that the design of KirbyBase is much cleaner now.  No changes were
+  made to the class interfaces, so you should not have to change any of 
+  your code.
+* Changed str_to_date and str_to_datetime to use Date#parse method.
+  Thanks to Emiel van de Laar for this enhancement.
+* Changed #pack method so that it no longer reads the whole file into
+  memory while packing it.
+  Thanks to Hugh Sasse for reporting this bug.
+* Changed code so that special character sequences like &linefeed; can be
+  part of input data and KirbyBase will not interpret it as special 
+  characters.
+  Thanks to Hugh Sasse for this bug fix.
+    
+2005-04-11:: Version 2.1
+* Changed the interface to KirbyBase#new and KirbyBase#create_table.  You
+  now specify arguments via a code block or as part of the argument list.
+* Added the ability to specify a class at table creation time.  
+  Thereafter, whenever you do a #select, the result set will be an array
+  of instances of that class, instead of instances of Struct.  You can
+  also use instances of this class as the argument to #insert, #update,
+  #set.
+* Added the ability to encrypt a table so that it is no longer stored as
+  a plain-text file.
+* Added the ability to explicity specify that you want a result set to be
+  sorted in ascending order.
+* Added the ability to import a csv file into an existing table.
+* Added the ability to select a record as if the table were a Hash with 
+  it's key being the recno field.
+* Added the ability to update a record as if the table were a Hash with
+  it's key being the recno field.
+
+2005-03-28:: Version 2.0
+* New version with completely new interface.  A huge thanks to Hal Fulton
+  for all of his help with this new version.

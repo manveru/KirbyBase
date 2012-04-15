@@ -1,0 +1,11 @@
+FW-190,Germany,Fighter,399,499,1942-12-01,false
+P-51,USA,Fighter,405,1210,1943-06-24,true
+P-47,USA,Fighter,365,888,1943-03-12,false
+B-17,USA,Bomber,315,1400,1937-05-01,true
+Typhoon,Great Britain,Fighter-Bomber,389,690,1944-11-20,false
+Spitfire,Great Britain,Fighter,345,540,1939-02-18,true
+Oscar,Japan,Fighter,361,777,1943-12-31,false
+ME-109,Germany,Fighter,366,514,1936-07-07,true
+JU-88,Germany,Bomber,289,999,1937-01-19,false
+P-39,USA,Fighter,,,,false
+Zero,Japan,Fighter,377,912,1937-05-15,true

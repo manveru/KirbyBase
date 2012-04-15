@@ -1,0 +1,67 @@
+= KirbyBase 2.6
+
+A small, plain-text, dbms written in Ruby.  It can be used either embedded 
+or client/server.  
+
+
+== Installation
+
+Unpack the file you downloaded.  Execute "ruby install.rb" or simply make 
+sure kirbybase.rb is somewhere in your Ruby library path.
+
+
+== Documentation
+
+Documentation is in kirbybaserubymanual.html.  Also, RDoc generated 
+documentation is in the doc directory.
+
+See the examples directory for examples of how to use KirbyBase.
+
+
+== Manifest
+
+* README - this file
+* install.rb - install script
+* changes.txt - history of changes.
+* kirbybaserubymanual.html - documentation
+* lib/kirbybase.rb - dbms library
+* bin/kbserver.rb - multi-threaded database server script.
+* test directory - unit tests
+* examples directory - many example scripts demonstrating features.
+* images directory - images used in manual.
+
+
+== Author
+
+Written in 2005 by Jamey Cribbs <mailto:jcribbs@twmi.rr.com>
+
+
+== License
+
+KirbyBase is distributed under the same license as Ruby.
+
+Copyright (c) 2005 Jamey Cribbs
+
+
+
+== Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ IN THE SOFTWARE.
+
+
+== Feedback
+
+Please send any bug reports, suggestions, ideas,
+improvements, to:
+
+jcribbs@netpromi.com
+
+== Home Page
+
+http://www.netpromi.com/kirbybase_ruby.html

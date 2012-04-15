@@ -1,0 +1,2324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 7.0.2" />
+<style type="text/css">
+/* Debug borders */
+p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
+/*
+  border: 1px solid red;
+*/
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a { color: blue; }
+a:visited { color: fuchsia; }
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+tt {
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  font-family: sans-serif;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  border-bottom: 2px solid silver;
+  padding-top: 0.5em;
+}
+
+div.sectionbody {
+  font-family: serif;
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+span#email {
+}
+span#revision {
+  font-family: sans-serif;
+}
+
+div#footer {
+  font-family: sans-serif;
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble,
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-right: 10%;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock > div.content {
+  padding-left: 2.0em;
+}
+div.quoteblock .attribution {
+  text-align: right;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 2px solid silver;
+}
+
+div.exampleblock > div.content {
+  border-left: 2px solid silver;
+  padding: 0.5em;
+}
+
+div.verseblock div.content {
+  white-space: pre;
+}
+
+div.imageblock div.content { padding-left: 0; }
+div.imageblock img { border: 1px solid silver; }
+span.image img { border-style: none; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: italic;
+}
+dd > *:first-child {
+  margin-top: 0;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.olist2 {
+  list-style-type: lower-alpha;
+}
+
+div.tableblock > table {
+  border-color: #527bbd;
+  border-width: 3px;
+}
+thead {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+tfoot {
+  font-weight: bold;
+}
+
+div.hlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+td.hlist1 {
+  vertical-align: top;
+  font-style: italic;
+  padding-right: 0.8em;
+}
+td.hlist2 {
+  vertical-align: top;
+}
+
+@media print {
+  div#footer-badges { display: none; }
+}
+/* Workarounds for IE6's broken and incomplete CSS2. */
+
+div.sidebar-content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+div.sidebar-title, div.image-title {
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 0.0em;
+  margin-bottom: 0.5em;
+}
+
+div.listingblock div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock-content {
+  padding-left: 2.0em;
+}
+
+div.exampleblock-content {
+  border-left: 2px solid silver;
+  padding-left: 0.5em;
+}
+</style>
+<title>KirbyBase Manual (Ruby Version)</title>
+</head>
+<body>
+<div id="header">
+<h1>KirbyBase Manual (Ruby Version)</h1>
+<span id="author">Jamey Cribbs</span><br />
+<span id="email"><tt>&lt;<a href="mailto:jcribbs@netpromi.com">jcribbs@netpromi.com</a>&gt;</tt></span><br />
+v2.6 June 2006
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/kirby1.jpg" alt="images/kirby1.jpg"/>
+</div>
+<div class="image-title">Figure: Kirby, pictured here in attack mode.</div>
+</div>
+</div>
+</div>
+<h2>Table of Contents</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="sidebar-content">
+<ol>
+<li>
+<p>
+<a href="#introduction">Introduction</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#connecting-to-a-database">Connecting to a database</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#creating-a-new-table">Creating a new table</a>
+</p>
+<ol class="olist2">
+<li>
+<p>
+<a href="#field-types">Database field types</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#recno">The recno field</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#encrypt">Turning on encryption</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#record-class">Specifying a custom record class</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#defaults">Specifying default values</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#requireds">Specifying required fields</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#creating-indexes">Indexes</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#a-note-about-indexes">A note about indexes</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#creating-lookup-fields">Lookup Fields</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#creating-link-many-fields">Link_many Fields</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#creating-calculated-fields">Calculated Fields</a>
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>
+<a href="#obtaining-a-reference-to-an-existing-table">Obtaining a reference to an existing table</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#insert-method">The insert method</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#how-to-select-records">How to select records</a>
+</p>
+<ol class="olist2">
+<li>
+<p>
+<a href="#select-method">The select method</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#selecting-by-index">Selecting by index</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#selecting-by-recno-index">Selecting by :recno index</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#selects-involving-lookups-or-link-manys">Selects involving Lookups or Link_manys</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#a-note-about-nil-values">A note about nil values</a>
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>
+<a href="#kbresultset">KBResultSet</a>
+</p>
+<ol class="olist2">
+<li>
+<p>
+<a href="#sorting-a-result-set">Sorting a result set</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#to-report">Producing a report from a result set</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#crosstabs">CrossTabs or Pivot Tables or Column Arrays (i.e.  I don't know what to call them!)</a>
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>
+<a href="#how-to-update-records">How to update records</a>
+</p>
+<ol class="olist2">
+<li>
+<p>
+<a href="#update-method">The update method</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#set-method">The set method</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#update-all-method">The update_all method</a>
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>
+<a href="#how-to-delete-records">How to delete records</a>
+</p>
+<ol class="olist2">
+<li>
+<p>
+<a href="#delete-method">The delete method</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#clear-method">The clear method</a>
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>
+<a href="#pack-method">The pack method</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#memo-and-blob-fields">Memo and Blob Fields</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#misc-kirbybase-methods">Miscellaneous KirbyBase methods</a>
+</p>
+<ol class="olist2">
+<li>
+<p>
+<a href="#drop-table">KirbyBase#drop_table</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#tables">KirbyBase#tables</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#table-exists">KirbyBase#table_exists?</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#rename-table">KirbyBase#rename_table</a>
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>
+<a href="#misc-kbtable-methods">Miscellaneous KBTable methods</a>
+</p>
+<ol class="olist2">
+<li>
+<p>
+<a href="#update-by-recno">KBTable#[]=</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#get-by-recno">KBTable#[]</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#field-names">KBTable#field_names</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#field-types">KBTable#field_types</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#total-recs">KBTable#total_recs</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#import-csv">KBTable#import_csv</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#add-column">KBTable#add_column</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#drop-column">KBTable#drop_column</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#rename-column">KBTable#rename_column</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#change-column-type">KBTable#change_column_type</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#change-column-default-value">KBTable#change_column_defaul_value</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#change-column-required">KBTable#change_column_required</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#add-index">KBTable#add_index</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#drop-index">KBTable#drop_index</a>
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p>
+<a href="#special-characters-in-data">Special characters in data</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#table-structure">Table Structure</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#server-notes">Server Notes</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#tips-on-improving-performance">Tips on improving performance</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#single-user-diagram">Single-user memory space diagram</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#client-server-diagram">Client/Server memory space diagram</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#license">License</a>
+</p>
+</li>
+<li>
+<p>
+<a href="#credits">Credits</a>
+</p>
+</li>
+</ol>
+</div></div>
+</div>
+<h2><a id="introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<p>KirbyBase is a simple, pure-Ruby, flat-file database management system.
+Some of its features include:</p>
+<ul>
+<li>
+<p>
+Since KirbyBase is written in Ruby, it runs anywhere that Ruby runs. It
+is easy to distribute, since the entire DBMS is in one (approx. 100k) code
+file.
+</p>
+</li>
+<li>
+<p>
+All data is kept in plain-text, delimited files that can be edited by
+hand.  This gives you the ability to make changes by just opening the file
+up in a text editor, or you can use another programming language to read the
+ file in and do things with it.
+</p>
+</li>
+<li>
+<p>
+It can be used as an embedded database or in a client/server, multi-user
+mode. To switch from one mode to the other, you only have to change one
+line in your program. Included in the distribution is a sample database
+server script using DRb.
+</p>
+</li>
+<li>
+<p>
+Tables are kept on disk during use and accessed from disk when selecting,
+updating, inserting, and deleting records. Changes to a table are written
+immediately to disk.  KirbyBase is not an "in-memory" database.  Once you
+update the database in your program, you can be assured that the change has
+been saved to disk. The chance of lost data due to power interruptions, or
+disk crashes is much reduced. Also, since the entire database does not have
+to reside in memory at once, KirbyBase should run adequately on a
+memory-constrained system.
+</p>
+</li>
+<li>
+<p>
+You can specify the type of data that each field will hold. The available
+data types are: String, Integer, Float, Boolean, Time, Date, DateTime, Memo,
+ Blob, and YAML.
+</p>
+</li>
+<li>
+<p>
+The query syntax is very "rubyish". Instead of having to use another
+language like SQL, you can express your query using Ruby code blocks.
+</p>
+</li>
+<li>
+<p>
+All inserted records have an auto-incrementing primary key that is
+guaranteed to uniquely identify the record throughout its lifetime.
+</p>
+</li>
+<li>
+<p>
+You can specify that the result set be sorted on multiple fields, each
+one either ascending or descending.
+</p>
+</li>
+<li>
+<p>
+You can specify that certain fields be indexed. Using an index in a select
+query can greatly improve performance on large tables (I've seen 10x speed
+improvements). Index maintenance is completely handled by KirbyBase.
+</p>
+</li>
+<li>
+<p>
+You can specify that a field has a "lookup table".  Whenever that field is
+accessed, the corresponding record from the lookup table is automatically
+available.
+</p>
+</li>
+<li>
+<p>
+You can specify one-to-many links between tables, somewhat analogous to a
+"join" in SQL.
+</p>
+</li>
+<li>
+<p>
+You can create calculated fields that are computed at runtime.
+</p>
+</li>
+<li>
+<p>
+It is fairly fast, comparing favorably to SQLite.
+</p>
+</li>
+</ul>
+<p>In meeting your DBMS needs, KirbyBase fits in somewhere between plain
+text files and small SQL database management systems like SQLite and
+MySQL.</p>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="sidebar-title">Drop me a line!</div>
+<p>If you find a use for KirbyBase, please send me an email telling how you
+use it, whether it is ok for me to mention your application on the
+"KirbyBase Applications" webpage, and possibly a link to your application's
+webpage (if you have one).</p>
+</div></div>
+</div>
+<h2><a id="connecting-to-a-database"></a>Connecting to a database</h2>
+<div class="sectionbody">
+<p>To use Kirbybase, you first need to require the module:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>require 'kirbybase'</tt></pre>
+</div></div>
+<p>Then create an instance:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db = KirbyBase.new</tt></pre>
+</div></div>
+<p>By default, the instance is a local connection using the same memory space
+as your application. To specify a client/server connection, it would look
+like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db = KirbyBase.new(:client, 'localhost', 44444)</tt></pre>
+</div></div>
+<p>Of course, you would substitute your server's ip address and port number.</p>
+<p>To specify a different location (other than the current directory) for the
+database files, you need to pass the location as an argument, like so:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db = KirbyBase.new(:local, nil, nil, './data')</tt></pre>
+</div></div>
+<p>KirbyBase treats every file in the specified directory that has the proper
+extension as a database table. The default extension is ".tbl".  To specify
+a different extension, pass this as an argument, like so:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db = KirbyBase.new(:local, nil, nil, './', '.dat')</tt></pre>
+</div></div>
+<p>To specify a different location other than the current directory for any
+memo/blob files, you need to pass the location as an argument, like so:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db = KirbyBase.new(:local, nil, nil, './', '.tbl', './memos')</tt></pre>
+</div></div>
+<p>If you don't want KirbyBase to spend time initially creating all of the
+indexes for the tables in the database, you can pass true as the
+delay_index_creation argument:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db = KirbyBase.new(:local, nil, nil, './', '.tbl', './', true)</tt></pre>
+</div></div>
+<p>KirbyBase will skip initial index creation and will create a table's
+indexes when the table is first referenced.</p>
+<p>You can also specify the arguments via a code block.  So, if you don't want
+to have to specify a bunch of arguments just to get to the one you want,
+put it in a code block attached to the method call.  You could re-code the
+previous example like so:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db = KirbyBase.new { |d| d.delay_index_creation = true }</tt></pre>
+</div></div>
+</div>
+<h2><a id="creating-a-new-table"></a>Creating a new table</h2>
+<div class="sectionbody">
+<p>To create a new table, you specify the table name, and a name and type for
+each column. For example, to create a table containing information on World
+War II planes:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl = db.create_table(:plane, :name, :String, :country, :String,
+:role, :String, :speed, :Integer, :range, :Integer, :began_service, :Date,
+:still_flying, :Boolean)</tt></pre>
+</div></div>
+<div class="sidebarblock">
+<a id="field-types"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KirbyBase Field Types</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/tip.png" alt="Tip" />
+</td>
+<td class="content">:String, :Integer, :Float, :Boolean(true/false), :Time, :Date,
+:DateTime, :Memo, :Blob, and :YAML.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="recno"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">The recno field</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">KirbyBase will automatically create a primary key field, called
+recno, with a type of :Integer, for each table.  This field will be
+auto-incremented each time a record is inserted. You can use this field in
+select, update, and delete queries, but you can't modify this field.</td>
+</tr></table>
+</div>
+</div></div>
+<h3><a id="encrypt"></a>Turning on encryption</h3>
+<p>You can also specify whether the table should be encrypted. This will save
+the table to disk encrypted (more like obfuscated) using a Vignere Cipher.
+This is similar to rot13, but it uses a key to determine character
+substitution. Still, this encryption will only stymie the most casual
+of hackers. Do not rely on it to keep sensitive data safe! You specify
+encryption by using a code block attached to #create_table:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl = db.create_table(:plane, :name, :String...) do |t|
+    t.encrypt = true
+end</tt></pre>
+</div></div>
+<h3><a id="record-class"></a>Specifying a custom record class</h3>
+<p>You can also specify that you want records of the table to be returned to
+you as instances of a class. To do this, simply define a class before you
+call #create_table. This class needs to have an accessor for each fieldname
+in the table.</p>
+<p>If this class has a class method, called #kb_create, KirbyBase, when
+creating each record of the result set, will call that method and pass it
+the field values of the result record.  #kb_create will need to handle
+creating an instance of the record class itself.</p>
+<p>Here is an example of #kb_create in action:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>class Foobar
+    attr_accessor(:recno, :name, :country, :role, :speed, :range,
+     :began_service, :still_flying, :alpha, :beta)
+
+    def Foobar.kb_create(recno, name, country, role, speed, range,
+     began_service, still_flying)
+        name ||= 'No Name!'
+        speed ||= 0
+        began_service ||= Date.today
+
+        Foobar.new do |x|
+            x.recno = recno
+            x.name = name
+            x.country = country
+            x.role = role
+            x.speed = speed
+            x.range = range
+            x.began_service = began_service
+            x.still_flying = still_flying
+        end
+    end
+
+    def initialize(&amp;block)
+        instance_eval(&amp;block)
+    end
+end</tt></pre>
+</div></div>
+<p>Pass this class to #create_table in an attached code block, like so:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl = db.create_table(:plane, :name, :String...) do |t|
+    t.record_class = Foobar
+end</tt></pre>
+</div></div>
+<p>Now, when you call #select, the result set will be made up of instances of
+Foobar, instead of the default, which is instances of Struct. This also
+works the other way. You can now specify instances of Foobar as input to
+the #insert, #update and #set methods. More on those methods below.</p>
+<p>If the custom record class does not respond to #kb_create, KirbyBase will
+call the class's #new method instead, passing it all of the field values.</p>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">The #create_table method will return a reference to a KBTable
+instance.  This is the only way, besides calling KirbyBase#get_table, that
+you can obtain a handle to a KBTable instance. You can not call KBTable#new
+directly.</td>
+</tr></table>
+</div>
+</div></div>
+<h3>Specifying Advanced Field Type Information</h3>
+<p>There are four types of advanced field type information that you can
+specify:
+  Defaults, Requireds, Indexes and Extras (i.e. Lookup, Link_many,
+  Calculated).</p>
+<h4><a id="defaults"></a>Default Field Values</h4>
+<p>Normally, when you insert a record, if you don't specify a value for a field
+or specify nil as the value, KirbyBase stores this as an empty string
+(i.e. "") in the table's physical file, and returns it as a nil value when
+you do a #select.</p>
+<p>However, you can tell KirbyBase that you want a column to have a default
+value.  Only KBTable#insert is affected by default values.  Default values
+do not apply to updating a record.  So, for inserts, there are two cases
+where a default value, if one is specified, will be applied:  (1) if nil
+is specified for a field's value, and (2) if no value is specified for a
+field.</p>
+<p>For example, to specify that the category column has a default value, you
+would code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:addressbook, :firstname, :String,
+ :lastname,  :String, :phone_no,  :String,
+ :category,  {:DataType=&gt;:String, :Default=&gt;'Business'})</tt></pre>
+</div></div>
+<p>Notice that, since we are specifying advanced field type information, we
+cannot just simply say :String for the second half of the field definition.
+Instead, we have to pass a hash, with a :DataType item set to :String.
+Next, because we are specifying a default value, we have to include a hash
+item called :Default with its value set to whatever we want the default to
+be.  The default value must be of a type that is valid for the column.</p>
+<h4><a id="requireds"></a>Required Fields</h4>
+<p>Normally, when you insert or update a record, if you don't specify a value
+for a field or specify nil as the value, KirbyBase stores this as an empty
+string (i.e. "") in the table's physical file, and returns it as a nil
+value when you do a #select.</p>
+<p>However, you can tell KirbyBase that you want a column to be required
+(i.e. you must supply a value and it can't be nil).  When a record is
+inserted or updated, an exception will be raised for any required field
+that has not been given a value or been given a nil value.</p>
+<p>For example, to specify that the category column is required, you would
+code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:addressbook, :firstname, :String,
+ :lastname,  :String, :phone_no,  :String,
+ :category,  {:DataType=&gt;:String, :Required=&gt;true})</tt></pre>
+</div></div>
+<p>Notice that, since we are specifying advanced field type information, we
+cannot just simply say :String for the second half of the field definition.
+Instead, we have to pass a hash, with a :DataType item set to :String.
+Next, because we are specifying that a column is required, we have to
+include a hash item called :Required with its value set to true.</p>
+<h4><a id="creating-indexes"></a>Indexes</h4>
+<p>Indexes are in-memory arrays that have an entry that corresponds to each
+table record, but just holds the field values specified when the index was
+created, plus the :recno of the actual table record. Because index arrays
+are smaller than the actual table and because they are in-memory instead of
+on-disk, using an index in a select query is usually much faster than
+selecting against the table itself, especially when the table is quite
+large.</p>
+<p>To specify that an index is to be created, you need to tell KirbyBase which
+fields are to be included in a particular index.  You can have up to 5
+indexes per table.  Indexes can either contain single or multiple fields.
+For example, to create an index on firstname and lastname for a table called
+ :addressbook, you would code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:addressbook, :firstname, {:DataType=&gt;:String, :Index=&gt;1},
+                              :lastname,  {:DataType=&gt;:String, :Index=&gt;1},
+                              :phone_no,  :String)</tt></pre>
+</div></div>
+<p>Notice that, since we are specifying advanced field type information, we
+cannot just simply say :String for the second half of the field definition.
+Instead, we have to pass a hash, with a :DataType item set to :String.
+Next, because we are creating an index, we have to include a hash item
+called :Index with its value set from 1 to 5.  For compound indexes, like
+the one in the above example, we need to make sure that all fields in the
+index have the same number.  To have another index for a table, just make
+sure you increment the index number.  So, for example, if we wanted to have
+another index for the :addressbook table on the field phone number, we would
+ code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:addressbook, :firstname, {:DataType=&gt;:String, :Index=&gt;1},
+                              :lastname,  {:DataType=&gt;:String, :Index=&gt;1},
+                              :phone_no,  {:DataType=&gt;:String, :Index=&gt;2})</tt></pre>
+</div></div>
+<p>Notice how we just increment the index number to 2 for the :phone_no index.
+Since there are no other fields with the same index number, this will create
+ an index with just the :phone_no field in it.  You will see how to use
+indexes in your select queries later.</p>
+<div class="sidebarblock">
+<a id="a-note-about-indexes"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">A note about indexes</div>
+<p>When KirbyBase initializes, it creates an instance for each table in
+the database.  It also creates each index array for each indexed field in
+each table.  So, if there are several large tables that have indexed fields,
+this database initialization process could take several seconds.  I decided
+to have it operate this way, because I thought that it made more sense to
+have a user application wait once upon initialization, rather than have it
+wait the first time a table is referenced.  A user is more used to waiting
+for an application to properly initialize, so this initial delay, I thought,
+would feel more natural to the user, rather than a wait time in the middle
+of the application.</p>
+<p>If you find that this initial delay while indexes are created is
+un-acceptable, you can pass delay_index_creation=true to KirbyBase.new.
+This will bypass the initial index creation for all tables.  Indexes for an
+individual table will be created when the table is first referenced.</p>
+<p>This is also an excellent reason to use the client/server capabilities of
+KirbyBase.  In client/server mode, the database initialization processing is
+all done on the server, so, once this is done, any users starting their
+client application and connecting to the server will experience no delay due
+to index array creation.</p>
+</div></div>
+<h4><a id="creating-lookup-fields"></a>Lookup Fields</h4>
+<p>Lookup fields are fields that hold a reference to a record in another table.
+ For example, say you have a table called :department that has fields called
+ :dept_id, :dept_name, and :manager.  Now, let's say that you don't want the
+ :manager field to just hold the manager's name; you want it to point to the
+ manager's record in the :employee table, which has fields like
+ :employee_id, :firstname, :lastname, :ss_no, etc.  What you want to do is
+ to tell KirbyBase that the :dept.manager field should actually point to the
+ manager's record in the :employee table (the "lookup" table).  Here's how
+ you would do that:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:department, :dept_id, :String, :dept_name, :String,
+ :manager, {:DataType=&gt;:String, :Lookup=&gt;[:employee, :employee_id]})</tt></pre>
+</div></div>
+<p>Ok, what we have done here is to tell KirbyBase a little bit "extra" about
+the :manager field.  We are specifying that whenever we ask for the value of
+:manager, we want KirbyBase to do a #select against the :employee table that
+compares the value of the :department.manager field to the value of the
+:employee.employee_id field. If an index is available for the
+:employee.employee_id field, KirbyBase will automatically use it.</p>
+<p>There is a shortcut to specifying a lookup field.  If the :employee_id field
+ has been designated a "key" field for the :employee table, we can even
+ shorten our code and KirbyBase will figure it all out.  For example, if the
+  :employee table was created with this code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:employee, :employee_id, {:DataType=&gt;:String, :Key=&gt;true},
+ :firstname, :String, :lastname, :String)</tt></pre>
+</div></div>
+<p>Then the field definition for :manager could be re-written as:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:department, :dept_id, :String, :dept_name, :String,
+ :manager, :employee)</tt></pre>
+</div></div>
+<p>KirbyBase will figure out that you want to compare :department.manager to
+:employee.employee_id.</p>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">In order to use the shortcut when specifying a lookup field, the
+lookup table it is pointing to <strong>must</strong> already exist.  This is so that
+KirbyBase can do the defaulting magic.</td>
+</tr></table>
+</div>
+</div></div>
+<h4><a id="creating-link-many-fields"></a>Link_many Fields</h4>
+<p>When you specify that a field has a Link_many, you are telling KirbyBase
+that you want to create a one-to-many link between this field and a subset
+of records from another table.</p>
+<p>For example, say you are creating an order entry system for your business.
+You have a master table called :orders that holds one record for each
+customer order that is placed.  It has fields like: :order_id, :cust_id,
+:order_date, etc.</p>
+<p>Now, you also need a table that is going to have a record for each detail
+item type ordered.  Let's call it :order_items and some of its fields would
+ be: :item_no, :qty, :order_id.</p>
+<p>Notice that the detail table has a field called :order_id.  This will hold
+the order_id linking it back to the :orders.order_id table.  If a customer
+order's only one type of item, then there will only be one record in the
+:order_items table that has that order_id.  But, if the customer places an
+order for many different types of items, there will be many records in the
+:order_items table that have the same order_id.  That's why we say that
+there is a "one to many" link between the master (or parent) table, :orders,
+ and the detail (or child) table, :order_items.</p>
+<p>When we select an :order record, we want the ability to also select all the
+detail records from the :order_items table that belong to that order.  We do
+ this by telling KirbyBase about the one-to-many link between the two
+tables.  Here's how:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:orders, :order_id, :Integer, :cust_id, :Integer,
+ :order_date, :Date, :items, {:DataType=&gt;:ResultSet, :Link_many=&gt;[:order_id,
+ :order_items, :order_id]})
+
+db.create_table(:order_items, :item_no, :Integer, :qty, :Integer,
+ :order_id, :Integer)</tt></pre>
+</div></div>
+<p>Now, look at the :Link_many item in the field type definition hash in the
+above example.  We are specifying that a field, called :items, be created
+with a field type of :ResultSet.  We tell KirbyBase that, when we ask for
+the value of :items, it should do a #select on :order_items and return a
+KBResultSet that contains :order_items whose :order_id field (the last item
+in the array above), equals the value of the :orders.order_id field (the
+first item of the array above).</p>
+<p>If you opened up the :orders table file in a text editor, you would notice
+that, for each record, the :items field is blank.  No data is ever stored in
+ this field, since its value is always computed at runtime.</p>
+<h4><a id="creating-calculated-fields"></a>Calculated Fields</h4>
+<p>When you specify that a field is a Calculated field, you are telling
+KirbyBase to compute the value of the field at runtime, based on the code
+string that you pass it at table creation time.</p>
+<p>For example. let's say you have a table that is going to track your
+purchases.  It will have fields like :purchase_date, :description, :qty, and
+ :price.</p>
+<p>Let's say that you want to have a "virtual" field, called :total_cost, that
+is the result of quantity multiplied by price.  You want this field
+calculated at runtime, so that if you change a record's quantity or price,
+the :total_cost field will automatically reflect the changes.
+Here's how you would define this table:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:purchases, :purchase_date, :Date, :description, :String,
+ :qty, :Integer, :price, :Float, :total_cost, {:DataType=&gt;:Float,
+ :Calculated=&gt;'qty*price'})</tt></pre>
+</div></div>
+<p>See how we tell KirbyBase how to calculate the field?  By multiplying the
+:qty field by the :price field.</p>
+<p>If you opened up the :purchases file in a text editor, you would notice
+that, for each record, the :total_cost field is blank.  No data is ever
+stored in this field, since its value is always computed at runtime.</p>
+</div>
+<h2><a id="obtaining-a-reference-to-an-existing-table"></a>Obtaining a reference to an existing table</h2>
+<div class="sectionbody">
+<p>If a table already exists and you need to get a reference to it so that you
+can insert, select, etc., you would call the #get_table method from your
+KirbyBase instance. This is how to obtain a handle to an existing table.
+You cannot call KBTable#new directly.</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl_another_reference = db.get_table(:plane)</tt></pre>
+</div></div>
+<p>Then, you can use it just like you would use a reference you got when
+you created a new table.</p>
+</div>
+<h2><a id="insert-method"></a>The insert method</h2>
+<div class="sectionbody">
+<p>To insert records into a table, you use the insert method. You can use an
+array, a hash, a struct, a code block, or an instance of the table's custom
+record class to specify the insert values.</p>
+<h3>Insert a record using an array for the input values:</h3>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.insert('FW-190', 'Germany', 'Fighter', 399, 499,
+ Date.new(1942,12,1), false)</tt></pre>
+</div></div>
+<p>The length of the data array must equal the number of columns in the table,
+<strong>not</strong> including the :recno column. Also, the data types must match. In the
+above example, specifying "399", instead of 399, would have resulted in an
+error.</p>
+<h3>Insert a record using a hash for the input values:</h3>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.insert(:name='P-51', :country='USA', :role='Fighter', :speed=403,
+ :range=1201, :began_service=Date.new(1943,6,24), :still_flying=true)</tt></pre>
+</div></div>
+<h3>Insert a record using a Struct for the input values:</h3>
+<div class="listingblock">
+<div class="content">
+<pre><tt>InputRec = Struct.new(:name, :country, :role, :speed, :range,
+ :began_service, :still_flying)
+rec = InputRec.new('P-47', 'USA', 'Fighter', 365, 888, Date.new(1943,3,12),
+false)
+
+plane_tbl.insert(rec)</tt></pre>
+</div></div>
+<h3>Insert a record using a code block for the input values:</h3>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.insert do |r|
+    r.name = 'B-17'
+    r.country = 'USA'
+    r.role = 'Bomber'
+    r.speed = 315
+    r.range = 1400
+    r.began_service = Date.new(1937, 5, 1)
+    r.still_flying = true
+end</tt></pre>
+</div></div>
+<h3>Insert a record using an instance of the table's custom record class:</h3>
+<div class="listingblock">
+<div class="content">
+<pre><tt>foo = Foobar.new do |x|
+    x.name = 'Spitfire'
+    x.country = 'Great Britain'
+    x.role = 'Fighter'
+    x.speed = 333
+    x.range = 454
+    x.began_service = Date.new(1936, 1, 1)
+    x.still_flying = true
+    x.alpha = "This variable won't be stored in KirbyBase."
+    x.beta = 'Neither will this one.'
+end
+
+plane_tbl.insert(foo)</tt></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/note.png" alt="Note" />
+</td>
+<td class="content">The #insert method will return the record number of the newly created
+record.  This is an auto-incremented integer generated by KirbyBase. This
+number will <strong>never</strong> change for the record and can be used as a unique
+identifier for the record.</td>
+</tr></table>
+</div>
+</div></div>
+</div>
+<h2><a id="how-to-select-records"></a>How to select records</h2>
+<div class="sectionbody">
+<p>The syntax you use to select records to perform operations on is the same
+for a select, update, or delete statement, so I wanted to cover, in
+general, how to create a query expression first, before getting to the
+specifics of select, update, and delete.</p>
+<p>In KirbyBase, query conditions are specified simply by using Ruby code
+blocks.  Therefore, any code block that can be converted into a Proc object
+is valid.  This allows for great flexibility, as you will see in the many
+examples below.</p>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/tip.png" alt="Tip" />
+</td>
+<td class="content">You can find many examples of how to specify queries in the "examples"
+directory of the KirbyBase distribution.</td>
+</tr></table>
+</div>
+</div></div>
+<p>Now that we have a general understanding of how to select records to operate
+on, lets get more specific by looking at the select, update, and delete
+methods.</p>
+<h3><a id="select-method"></a>The select method</h3>
+<p>The select method allows you to ask for all records in a table that match
+certain selection criteria. Additionally, you can also specify which fields
+you want included in the result set. The select method returns an instance
+of KBResultSet, which is an array of records that satisfied the select
+criteria. KBResultSet is covered in more detail later in the manual.</p>
+<p>Here is the simplest example of a select statement:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result_set = plane_tbl.select</tt></pre>
+</div></div>
+<p>Since, no code block was specified, KirbyBase will include all records in
+the result set.  Additionally, because a list of fields to include in the
+result set was not specified, KirbyBase will include all fields for each
+record in the result set.</p>
+<p>To specify that you only want a subset of fields in the result set, you list
+ their field names as arguments to the select method. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result_set = plane_tbl.select(:name, :speed)</tt></pre>
+</div></div>
+<p>To specify selection criteria, attach a code block to the select method
+call.  For example, if you only wanted to select Japanese planes:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result_set = plane_tbl.select(:name, :speed) { |r| r.country == 'Japan' }</tt></pre>
+</div></div>
+<p>You can combine multiple expressions in the code block. For example, to
+select only US planes that have a speed greater than 350mph:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result_set = plane_tbl.select { |r| r.country == 'USA' and r.speed &gt; 350 }</tt></pre>
+</div></div>
+<p>You can use regular expressions in the code block. Let's select all Axis
+fighters:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result_set = plane_tbl.select do |r|
+    r.country =~ /Germany|Japan/ and r.role == 'Fighter'
+end</tt></pre>
+</div></div>
+<h3><a id="selecting-by-index"></a>Selecting by index</h3>
+<p>Performing a select query using an index is almost identical to performing a
+ regular select query.  You just have to specify the particular select
+method, based on the index you wish to use.</p>
+<p>For example, say you have created an index on the :speed field of the
+:plane table.  You want to search for all planes with a speed greater than
+400 mph.  Ruby automatically creates select methods for each one of the
+indexes of a table.  So, you would code your select query like this:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.select_by_speed_index { |r| r.speed &gt; 400 }</tt></pre>
+</div></div>
+<p>Notice that you simply insert the name of the field as part of the method
+name.  Its as simple as that.</p>
+<p>For compound indexes, you just need to specify the
+indexed field names in the select method in the same order as they are in
+the table. So, let's say you have indexed the :plane table on :country and
+:role, in one index.  To select on this compound index, you would code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.select_by_country_role_index do |r|
+    r.country == 'Germany' and r.role == 'Fighter' }
+end</tt></pre>
+</div></div>
+<p>Notice how you just list both fields as part of the name of the select
+method, separated by underscores.</p>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/warning.png" alt="Warning" />
+</td>
+<td class="content">If you specify a select method that does not exist, you will get an
+ error.  Likewise, if you specify a query by an index, yet include a field
+name in the query that is not part of the index, you will get an error.</td>
+</tr></table>
+</div>
+</div></div>
+<h3><a id="selecting-by-recno-index"></a>Selecting by :recno index</h3>
+<p>For each table, a :recno index is automatically created, whether or not
+other indexes are explicitly created by you.  You can alway use this index
+to select records based solely on :recno.  For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.select_by_recno_index { |r| [3, 45, 152].include?(r.recno) }</tt></pre>
+</div></div>
+<h3><a id="selects-involving-lookups-or-link-manys"></a>Selects Involving Lookups or Link_manys</h3>
+<p>Selects that involve Lookup fields or Link_many fields have a special case
+because both field types return complex objects rather than simple data
+types.  For example, consider the lookup field example that I described
+earlier.  For reference, here are the two table defintions again:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>department_tbl = db.create_table(:department, :dept_id, :String,
+ :dept_name, :String, :manager, {:DataType=&gt;:String, :Lookup=&gt;[:employee,
+ :employee_id]})
+
+employee_tbl = db.create_table(:employee, :employee_id, {:DataType=&gt;:String,
+ :Key=&gt;true}, :firstname, :String, :lastname, :String)</tt></pre>
+</div></div>
+<p>To find the department managed by John Doe, the select query would look like
+ this:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>department_tbl.select do |r|
+    r.manager.firstname == 'John' and r.manager.lastname == 'Doe'
+end</tt></pre>
+</div></div>
+<p>Notice how the manager attribute is itself a Struct with its own members.</p>
+<p>To print out all departments including the manager's full name:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>department_tbl.select.each do |r|
+    puts 'Department: %s Manager: %s %s' % [r.dept_name,
+     r.manager.firstname, r.manager.lastname]
+end</tt></pre>
+</div></div>
+<p>Selects involving Link_many fields are slightly different because they
+involve ResultSets instead of just single objects.  Here's the table
+definitions from the earlier Link_many discussion:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>orders_tbl = db.create_table(:orders, :order_id, :Integer,
+ :cust_id, :Integer, :order_date, :Date, :items, {:DataType=&gt;:ResultSet,
+ :Link_many=&gt;[:order_id, :order_items, :order_id]})
+
+order_items_tbl = db.create_table(:order_items, :item_no, :Integer,
+ :qty, :Integer, :order_id, :Integer)</tt></pre>
+</div></div>
+<p>To print an order and all of its associated detail items:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result = order_tbl.select { |r| r.order_id == 501 }.first
+puts '%d %d %s' % [result.order_id, result.cust_id, result.order_date]
+
+result.items.each { |item| puts '%d %d' % [item.item_no, item.qty] }</tt></pre>
+</div></div>
+<p>Notice how the items attribute in the ResultSet is itself a ResultSet
+containing all of the :order_items records that belong to the selected
+order.</p>
+<h3><a id="a-note-about-nil-values"></a>A Note About nil Values</h3>
+<p>Beginning in version 2.6 of KirbyBase, nil values are no longer stored as
+the singleton instance of NilClass in the database.  Now, they are stored
+as references to the singleton instance, kb_nil, of KBNilClass.  KBNilClass
+is as similar to NilClass as possible, but since NilClass cannot
+be sub-classed, there are a few minor differences.</p>
+<p>However, this should all be transparent to you because KirbyBase converts
+kb_nil values to Ruby nil values before returning the results of a query.
+The only time you will need to be worried about kb_nil is when you need to
+explicitly test for a nil value in a query.  For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.select {|r| r.speed == kb_nil}</tt></pre>
+</div></div>
+<p>which is the same as:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.select {|r| r.speed.kb_nil?}</tt></pre>
+</div></div>
+<p>Notice how it is very similar to how you would test for nil?</p>
+<p>The only other difference you will now notice, is if you open up a table in
+a text editor.  Now, nil values are stored as "kb_nil", instead of being
+stored as an empty string (i.e. "").  This has the added advantage that
+KirbyBase can now distinguish between empty strings and nil values.  In the
+past, if you saved an empty string as a field value, the next time you
+selected that record, KirbyBase would return that field's value as nil.</p>
+<p>The main reason for making this change was to eliminate the need to
+override NilClass#method_missing, which was cause for concern for some
+users.</p>
+</div>
+<h2><a id="kbresultset"></a>KBResultSet</h2>
+<div class="sectionbody">
+<p>As stated above, the select method returns an instance of KBResultSet, which
+is an array of Struct objects (or instances of the class specified in
+record_class), each one representing a record that satisfied the selection
+criteria.</p>
+<p>Since each item in KBResultSet is a Struct object, you can easily reference
+its members using field names. So, to print the name and speed of each
+German plane in the table you would code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.select(:name, :speed) { |r| r.country == 'German' }.each do |r|
+    puts '%s %s' % [r.name, r.speed]
+end</tt></pre>
+</div></div>
+<h3><a id="sorting-a-result-set"></a>Sorting a result set</h3>
+<p>You can specify sort criteria by calling KBResultSet#sort.  You must supply
+the sort method with a list of field names that you want to sort by. For
+example, to select all planes, include just name, country, and speed in the
+result set, and sort the result set by country (ascending) then name
+(ascending), you would code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result = plane_tbl.select(:name, :country, :speed).sort(:country, :name)</tt></pre>
+</div></div>
+<p>To indicate that you want a particular field sorted in descending order
+rather than ascending order, you need to put a minus sign in front of it.
+For example, to select all planes, include just name, country, and speed in
+the result set, and sort the result set by country (ascending) then speed
+(descending), you would code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result_set = plane_tbl.select(:name, :country, :speed).sort(:country,
+ -:speed)</tt></pre>
+</div></div>
+<p>You can also explicitly specify that a field be sorted in ascending order by
+putting a plus sign in front of it. This is not necessary, since ascending
+is the default, but its there if you prefer to use it.</p>
+<h3><a id="to-report"></a>Producing a report from a result set</h3>
+<p>Additionally, you can also transform the KBResultSet into a nicely formatted
+report, suitable for printing, by calling KBResultSet#to_report. To print
+a formatted report of all plane names, countries, and speeds, sorted by
+name, you would code the following:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>puts plane_tbl.select(:name, :country, :speed).sort(:name).to_report</tt></pre>
+</div></div>
+<h3><a id="crosstabs"></a>CrossTabs or Pivot Tables or Column Arrays (i.e.  I don't know what to call them!)</h3>
+<p>Every KBResultSet has an additional feature that can prove quite useful.
+When a result set is created, KirbyBase creates an array for each column
+name that has all of the values of that column in it.  Perhaps an example
+would make this more clear.  Let's say you have a table that looks like
+this:</p>
+<div class="tableblock">
+<table rules="all"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="102" />
+<col width="114" />
+<col width="137" />
+<thead>
+  <tr>
+    <th align="left">
+    name
+    </th>
+    <th align="left">
+    speed
+    </th>
+    <th align="left">
+    range
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    P-51
+    </td>
+    <td align="left">
+    402
+    </td>
+    <td align="left">
+    1201
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    ME-109
+    </td>
+    <td align="left">
+    354
+    </td>
+    <td align="left">
+    544
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    Spitfire
+    </td>
+    <td align="left">
+    343
+    </td>
+    <td align="left">
+    501
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<p>If you do a select on the table, not only will the result set contain a
+row for each record that satisfied the select condition, but it will also
+contain an array for each column, which will hold all the column values.
+Here's an example, using the above mentioned table:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result = plane_tbl.select
+
+puts result[0].name       =&gt;  P-51
+puts result[0].speed      =&gt;  402
+
+p result.speed            =&gt;  [402,354,343]</tt></pre>
+</div></div>
+<p>Notice how you can reference this "column array" by calling the column name
+as a method.  KirbyBase returns an array that holds all the values, in this
+case, of the speed column.  This can be very useful in some cases.  For a
+good example of this, look in the examples\crosstab_test directory of the
+distribution.</p>
+</div>
+<h2><a id="how-to-update-records"></a>How to update records</h2>
+<div class="sectionbody">
+<p>You can update the data in a table either by using the KBTable#update method
+ by itself, or using it in conjunction with the KBResultSet#set method.
+Both methods produce the same result.  The main difference is that, while
+using the #update method by itself, you can use a Hash, Array, or Struct as
+your update criteria, using the #set method in conjunction with the #update
+method adds the ability to use a code block as your update criteria.  You
+will see specific examples of this in "The update method" description below.</p>
+<h3><a id="update-method"></a>The update method</h3>
+<p>To update a table, you use the update method. You <strong>must</strong> specify a code
+block that indicates which records are to be updated. Additionally, you must
+specify the fields to be updated and the new values for those fields.</p>
+<p>You can update records using a Hash, Struct, an Array, or an instance of a
+class you defined. For example, to change the P-51's speed to 405mph and
+its range to 1210 miles, you could code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.update(:speed=&gt;405, :range=&gt;1210) { |r| r.name == 'P-51' }</tt></pre>
+</div></div>
+<p>or:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>UpdateRec = Struct.new(:name, :country, :role, :speed, :range,
+ :began_service, :still_flying)
+
+rec = UpdateRec.new
+rec.speed = 405
+rec.range = 1210
+plane_tbl.update(rec) { |r| r.name == 'P-51' }</tt></pre>
+</div></div>
+<h3><a id="set-method"></a>The set method</h3>
+<p>You can also update records using a code block, via KBResultSet#set:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.update {|r| r.name == 'P-51'}.set do |r|
+    r.speed = 405
+    r.range = 1210
+end</tt></pre>
+</div></div>
+<p>You can also update records using a Hash, Struct, or an Array, via
+KBResultSet#set:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.update {|r| r.name == 'P-51'}.set(:speed=&gt;405, :range=&gt;1210)</tt></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">When you don't supply a code block to the #select method,
+KirbyBase automatically selects all of the records in the table.  I felt
+that having the #update method work the same way was too dangerous.  It
+would be too easy for someone to accidentally update all of the records in
+a table if they forgot to supply a code block to #update.  That is why the
+#update method <strong>requires</strong> a code block.  To update all of the records in a
+table, use the #update_all method.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/note.png" alt="Note" />
+</td>
+<td class="content">The #update method will return an Integer specifying the number of
+records that were updated.</td>
+</tr></table>
+</div>
+</div></div>
+<h3><a id="update-all-method"></a>The update_all method</h3>
+<p>To update all records in a table, you can use KBTable#update_all.  This
+works just like the update method, except that you don't specify a code
+block containing selection criteria.</p>
+<p>For example, to add 50 mph to every record's speed field, you would code:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.update_all { |r| r.speed = r.speed + 50 }</tt></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/note.png" alt="Note" />
+</td>
+<td class="content">The #update_all method will return an Integer specifying the number
+of records that were updated.</td>
+</tr></table>
+</div>
+</div></div>
+</div>
+<h2><a id="how-to-delete-records"></a>How to delete records</h2>
+<div class="sectionbody">
+<p>Deleting records from a table is similar to performing a #select or an
+#update.</p>
+<h3><a id="delete-method"></a>The delete method</h3>
+<p>To use the #delete method, you <strong>must</strong> supply a code block that identifies
+which records should be deleted.</p>
+<p>For example, to delete the FW-190's record from the table:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.delete { |r| r.name == 'FW-190' }</tt></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">When you don't supply a code block to the #select method,
+KirbyBase automatically selects all of the records in the table.  I felt
+that having the #delete method work the same way was too dangerous.  It
+would be too easy for someone to accidentally delete all of the records in
+a table if they forgot to supply a code block to #delete.  That is why the
+#delete method <strong>requires</strong> a code block.  To delete all of the records in a
+table, use the #clear method.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/note.png" alt="Note" />
+</td>
+<td class="content">The #delete method will return an Integer specifying the total number
+of records that were deleted.</td>
+</tr></table>
+</div>
+</div></div>
+<h3><a id="clear-method"></a>The clear (alias delete_all) method</h3>
+<p>To completely empty a table, use the clear method. For example:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.clear</tt></pre>
+</div></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">By default, KirbyBase will reset the recno counter to 0. So, any
+new records inserted after a #clear will be given a :recno starting with 1.
+To prevent #clear from resetting the recno counter, pass false to #clear.</td>
+</tr></table>
+</div>
+</div></div>
+</div>
+<h2><a id="pack-method"></a>The pack method</h2>
+<div class="sectionbody">
+<p>When KirbyBase deletes a record, it really just fills the entire line in the
+file with spaces. Deleting the entire line and moving each subsequent line
+up one would take too much time. Also, when a record is updated, if the size
+of the updated record is greater than the size of the old record, KirbyBase
+spaces out that entire line in the file, and rewrites the updated record at
+the end of the file. Again, this is done so that the entire file doesn't
+have to be re-written just because one record got updated.</p>
+<p>However, this means that after a lot of deletes and updates, a table can
+have lots of blank lines in it. This slows down searches and makes the file
+bigger than it has to be. You can use the pack method to remove these blank
+lines:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>result = plane_tbl.pack</tt></pre>
+</div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">You can only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/note.png" alt="Note" />
+</td>
+<td class="content">The #pack method will return an Integer specifiying the number of
+blank lines that were removed from the table.</td>
+</tr></table>
+</div>
+</div></div>
+</div>
+<h2><a id="memo-and-blob-fields"></a>Memo and Blob Fields</h2>
+<div class="sectionbody">
+<p>Memo and Blob fields operate a little differently from standard field types.
+You specify their creation just like regular field types.  Notice how you
+can specify a base path for where memo/blob files will be stored.</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.create_table(:plane, :name, :String, :speed, :Integer, :descr,
+ :Memo) do |d|
+    d.memo_blob_path = './memos'
+end</tt></pre>
+</div></div>
+<p>However, what you actually store in the Memo field upon an #insert is an
+instance of KBMemo.  KBMemo has two attributes:  :filepath and :contents.
+The first holds the path (including filename) to the text file that will
+hold the contents of the memo.  This path will be relative to whatever
+path was specified as the memo_blob_path upon database initialization.  Here
+ is an example of how to do this:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>memo_string = &lt;&lt;END_OF_STRING
+The FW-190 was a World War II German fighter.  It was used primarily as an
+interceptor against Allied strategic bombers.
+END_OF_STRING
+
+memo = KBMemo.new(db, 'FW-190.txt', memo_string)
+plane_tbl.insert('FW-190', 'Germany', 399, 499, memo)</tt></pre>
+</div></div>
+<p>Updates work similarly in that you would need to supply a KBMemo instance
+to the #update method for the :Memo field.</p>
+<p>Other than this difference, you can use a memo field just like a regular
+field. When you do a #select, KirbyBase goes out to the file that holds the
+memo data, reads in all the lines, and returns a KBMemo instance.  Here is
+an example of how you can even query against a memo field:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.select { |r| r.descr.contents =~ /built in Detroit, Michigan/ }</tt></pre>
+</div></div>
+<p>And KirbyBase would select all records whose memo field contained the phrase
+ "built in Detroit, Michigan".</p>
+<p>Blob fields work similarly, except that instead of doing a #readlines,
+KirbyBase opens the file in binary mode and reads in the whole file at once.</p>
+</div>
+<h2><a id="misc-kirbybase-methods"></a>Miscellaneous KirbyBase methods</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<a id="drop-table"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KirbyBase#drop_table</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.drop_table(:plane)</tt></pre>
+</div></div>
+<p>Will delete a table from the database.</p>
+<p>Returns true if table was dropped.</p>
+</div></div>
+<div class="sidebarblock">
+<a id="tables"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KirbyBase#tables</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.tables</tt></pre>
+</div></div>
+<p>Returns an array of all table names in the database.</p>
+</div></div>
+<div class="sidebarblock">
+<a id="table-exists"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KirbyBase#table_exists?</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.table_exists?(:plane)</tt></pre>
+</div></div>
+<p>Returns true if table exists, false otherwise.</p>
+</div></div>
+<div class="sidebarblock">
+<a id="rename-table"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KirbyBase#rename_table</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>db.rename_table(:plane, :warplanes)</tt></pre>
+</div></div>
+<p>Rename table to new name.</p>
+<p>Returns a handle to the newly-renamed table.</p>
+</div></div>
+</div>
+<h2><a id="misc-kbtable-methods"></a>Miscellaneous KBTable methods</h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<a id="update-by-recno"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#[]=</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl[5] = {:country = 'Tasmania'}</tt></pre>
+</div></div>
+<p>You can quickly update an individual record by treating the table as a Hash
+and the keys as recno's. You can update it using a Hash, Array, or Struct.</p>
+<p>Returns Integer specifying number of records updated (should always be 1).</p>
+</div></div>
+<div class="sidebarblock">
+<a id="get-by-recno"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#[]</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl[5]</tt></pre>
+</div></div>
+<p>You can quickly select an individual record, by passing its recno to a
+table as if it were a hash.</p>
+<p>Returns a single record either in the form of a Struct or an instance of
+the table's custom record class, if specified.</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl[5, 14, 33]</tt></pre>
+</div></div>
+<p>You can also use the [] method to get a group of records by passing it more
+than one recno.</p>
+<p>Returns a KBResultSet with the records having the recno's you passed in.</p>
+</div></div>
+<div class="sidebarblock">
+<a id="field-names"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#field_names</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.field_names</tt></pre>
+</div></div>
+<p>Returns an array of the table's field names.</p>
+</div></div>
+<div class="sidebarblock">
+<a id="field-types"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#field_types</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.field_types</tt></pre>
+</div></div>
+<p>Returns an array of the table's field types (i.e. :String, :Integer, :Float)</p>
+</div></div>
+<div class="sidebarblock">
+<a id="total-recs"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#total_recs</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.total_recs</tt></pre>
+</div></div>
+<p>Returns an Integer specifying the total number of records in the table.</p>
+</div></div>
+<div class="sidebarblock">
+<a id="import-csv"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#import_csv</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.import_csv(csv_filename)</tt></pre>
+</div></div>
+<p>This method allows you to import a csv file into the current table.
+KirbyBase will attempt to convert the values in the csv file into their
+corresponding KirbyBase field types, based upon the field types you
+designated when you created the table.</p>
+<p>If you have FasterCSV installed KirbyBase will use it instead of CSV from
+the standard library.</p>
+<p>Returns an Integer specifying the total number of records imported.</p>
+</div></div>
+<div class="sidebarblock">
+<a id="add-column"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#add_column</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.add_column(:weight, :Integer, :range)</tt></pre>
+</div></div>
+<p>This method allows you to add a column to an existing table.  You must
+specify a column name, and a column type.  You can optionally specify a
+column that you want the new column added after.  If this is not specified,
+KirbyBase will add the column to the end of the table.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #add_column changes the structure of a table, you can
+only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="drop-column"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#drop_column</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.drop_column(:speed)</tt></pre>
+</div></div>
+<p>This method allows you to remove a column from an existing table.  You must
+specify the column name to be removed.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">You cannot drop the :recno column.</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #drop_column changes the structure of a table, you can
+only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="rename-column"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#rename_column</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.rename_column(:speed, :maximum_speed)</tt></pre>
+</div></div>
+<p>This method allows you to rename a column in an existing table.  You must
+specify the column to be renamed and a new column name.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">You cannot rename the :recno column.</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #rename_column changes the structure of a table, you can
+only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="change-column-type"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#change_column_type</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.change_column_type(:weight, :Float)</tt></pre>
+</div></div>
+<p>This method allows you to change a column's type in an existing table.  You
+must specify the column name and a new column type.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">You cannot change the type of the :recno column.</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #change_column_type changes the structure of a table, you
+ can only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="change-column-default-value"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#change_column_default_value</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.change_column_default_value(:country, 'United States')</tt></pre>
+</div></div>
+<p>This method allows you to change a column's default value in an existing
+table.  You must specify the column name and a default value.  If the
+default value is equal to nil, this, in effect will make the column not have
+a default value any more.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Since the :recno column cannot have a default value, you cannot
+change the default value of the :recno column.</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #change_column_default_value changes the structure of a
+table, you can only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="change-column-required"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#change_column_required</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.change_column_required(:country, true)</tt></pre>
+</div></div>
+<p>This method allows you to change whether a value for a column is required or
+not.  You must specify the column name and either true or false for the
+required argument.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">You cannot specify whether the :recno column is required or not.</td>
+</tr></table>
+</div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #change_column_required changes the structure of a table,
+ you can only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="add-index"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#add_index</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.add_index(:name, :country)</tt></pre>
+</div></div>
+<p>This method allows you to add an index to an existing table.  This index can
+ consist of one or more columns.  You must specify one or more column names
+that you want to make up the index.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #add_index changes the structure of a table, you can
+only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+<div class="sidebarblock">
+<a id="drop-index"></a>
+<div class="sidebar-content">
+<div class="sidebar-title">KBTable#drop_index</div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>plane_tbl.drop_index(:name, :country)</tt></pre>
+</div></div>
+<p>This method allows you to drop an index from an existing table.  You must
+specify one or more column names that make up the index that you want to
+drop.</p>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/important.png" alt="Important" />
+</td>
+<td class="content">Because #drop_index changes the structure of a table, you can
+only call this method when connect_type==:local.</td>
+</tr></table>
+</div>
+</div></div>
+</div>
+<h2><a id="special-characters-in-data"></a>Special characters in data</h2>
+<div class="sectionbody">
+<p>Since KirbyBase tables are just plain-text, newline-delimited files with
+each field delimited by a <em>|</em>, certain ASCII characters could cause problems
+when used as input. For example, entering a newline character (\n on Unix,
+\r\n on Windows) as part of a record's data would cause problems later when
+KirbyBase attempted to read this record. Likewise, using the <em>|</em> character
+in your data would also cause problems as KirbyBase uses this character as a
+ field delimiter. Finally, it turns out that Python has problems handling
+octal code \032 under Windows (possibly because it equates to Ctrl-Z), so
+to keep compatibility between the Ruby and Python versions of KirbyBase,
+this issue needs to be handled.</p>
+<p>To handle the above special characters as data input, KirbyBase checks all
+:String and :YAML input data and replaces the special characters with
+encodings that are safe. The following table shows how replacements are
+done:</p>
+<div class="tableblock">
+<table rules="all"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="182" />
+<col width="240" />
+<thead>
+  <tr>
+    <th align="left">
+    Input Character
+    </th>
+    <th align="left">
+    KirbyBase Replacement
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    \n
+    </td>
+    <td align="left">
+    &amp;amp;linefeed;
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    \r
+    </td>
+    <td align="left">
+    &amp;amp;carriage_return;
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    \032
+    </td>
+    <td align="left">
+    &amp;amp;substitute;
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    |
+    </td>
+    <td align="left">
+    &amp;amp;pipe;
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    &amp;
+    </td>
+    <td align="left">
+    &amp;amp;
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<p>KirbyBase will translate to and from the special characters as data is
+written to and read from a table. It should all be transparent to the user.
+The only time you would encounter the replacement words is if you were to
+open up the physical table file in a text editor or read it in as input
+outside of KirbyBase.</p>
+</div>
+<h2><a id="table-structure"></a>Table Structure</h2>
+<div class="sectionbody">
+<p>Every table in KirbyBase is represented by a physical, newline-delimited
+text-file. Here is an example:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>000006|000000|Struct|recno:Integer|name:String|country:String|speed:Integer
+1|P-51|USA|403
+2|P-51|USA|365
+3|Sptitfire|England|345
+4|Oscar|Japan|361
+5|ME-109|Germany|366
+6|Zero|Japan|377</tt></pre>
+</div></div>
+<p>The first line is the header rec. Each field is delimited by a "|".  The
+first field in the header is the record counter. It is incremented by
+KirbyBase to create new record numbers when records are inserted.</p>
+<p>The second field in the header is the deleted-records counter. Every time a
+line in the file is blanked-out (see <a href="#pack-method">The pack method</a>), this
+number is incremented. You can use this field in a maintenance script so
+that the table is packed whenever the deleted-records counter reaches, say,
+5,000 records.</p>
+<p>The third field in the header is the record_class field. If you specified a
+class when you created the table, its name will show up here and records
+returned from a #select will be instances of this class. The default is
+"Struct".</p>
+<p>The fourth field in the header is the :recno field. This field is
+automatically added to the table when it is created.  The field name and
+field type are separated by a ":".</p>
+<p>The rest of the fields are whatever you specified when you created the
+table.</p>
+<p>If there is a Z in the first position of the header rec and the rest of the
+file is a bunch of random characters, this means that the table is
+encrypted.</p>
+<p>Each record after the header record is simply a line of text. Newline
+characters delimit records.</p>
+</div>
+<h2><a id="server-notes"></a>Server Notes</h2>
+<div class="sectionbody">
+<p>There is a server script included in the distribution called kbserver.rb.
+This script uses DRb to turn KirbyBase into a client/server, multi-user
+DBMS. This DBMS server handles table locking for you so you don't have to
+worry about it.</p>
+</div>
+<h2><a id="tips-on-improving-performance"></a>Tips on improving performance</h2>
+<div class="sectionbody">
+<h3>Beware of Date/DateTime</h3>
+<p>Converting a String (the format in which data is stored in a KirbyBase
+table) to a Date/DateTime is slow.  If you have a large table with a
+Date/DateTime field, this can result in long query times.</p>
+<p>To get around this, you can specify the field type as a :String, instead of
+a :Date/:DateTime.  Queries will still work correctly, because Date/DateTime
+ fields that are in String format sort the same way they would if they were
+in native format.  Here's an example.  The following two expressions will
+result in the same result set being returned:</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>date_field &lt;= Date.new(2005, 05, 11)</tt></pre>
+</div></div>
+<p>and</p>
+<div class="listingblock">
+<div class="content">
+<pre><tt>date_field_stored_as_string_field &lt;= "2005-05-11"</tt></pre>
+</div></div>
+<h3>Create indexes on large tables</h3>
+<p>The larger a table becomes, the more sense it makes to create an index on
+one or more of its fields.  Even though you take a hit when KirbyBase first
+ initializes because it has to create the index arrays, you make up for it
+after that in greatly improved query speeds.  I have noticed speed-ups of
+as much as 10x on large tables.</p>
+<h3>Create indexes on foreign keys</h3>
+<p>If you have a Link_many on a table field, you might want to think about
+creating an index on the field in the child table that is being linked to.
+When performing a one-to-many link, KirbyBase will automatically take
+advantage of an index on the link field in the child table.</p>
+<p>By the way, the same holds true for Lookups.</p>
+<h3>When possible, always search by :recno</h3>
+<p>This might be a no-brainer, but, if you have the chance to select by
+:recno, use the built-in #select_by_recno_index method (or the #[] method).
+This is even faster than selecting on a regularly indexed field, because the
+ :recno index that KirbyBase creates for each table is actually a Hash, not
+an Array like all of the regular indexes.  So selects are even faster.</p>
+</div>
+<h2><a id="single-user-diagram"></a>Single-user memory space diagram</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/single_user.png" alt="images/single_user.png"/>
+</div>
+<div class="image-title">Figure: Single-user (embedded) mode.</div>
+</div>
+</div>
+<h2><a id="client-server-diagram"></a>Client/Server memory space diagram</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/client_server.png" alt="images/client_server.png"/>
+</div>
+<div class="image-title">Figure: Client/Server (separate memory spaces) mode.</div>
+</div>
+</div>
+<h2><a id="license"></a>License</h2>
+<div class="sectionbody">
+<p>KirbyBase is distributed under the same license terms as Ruby.</p>
+</div>
+<h2><a id="credits"></a>Credits</h2>
+<div class="sectionbody">
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<img src="./images/note.png" alt="Note" />
+</td>
+<td class="content">This manual was produced using the awesome text document formatter,
+<a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a>.</td>
+</tr></table>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 26-Jun-2006 14:36:38 EDT
+</div>
+</div>
+</body>
+</html>

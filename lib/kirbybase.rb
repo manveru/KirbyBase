@@ -3631,7 +3631,7 @@ end
 #---------------------------------------------------------
 # KBResultSet
 #---------------------------------------------------------------------------
-class KBResultSet < Array
+class KBResultSet
     #-----------------------------------------------------------------------
     # KBResultSet.reverse
     #-----------------------------------------------------------------------
@@ -3642,11 +3642,11 @@ class KBResultSet < Array
     #-----------------------------------------------------------------------
     # initialize
     #-----------------------------------------------------------------------
-    def initialize(table, filter, filter_types, *args)
+    def initialize(table, filter, filter_types, *values)
         @table = table
         @filter = filter
         @filter_types = filter_types
-        super(*args)
+        @values = values
 
         @filter.each do |f|
             get_meth_str = <<-END_OF_STRING
@@ -3667,8 +3667,18 @@ class KBResultSet < Array
     # to_ary
     #-----------------------------------------------------------------------
     def to_ary
-        to_a
+        @values.dup
     end
+
+    def collect(&block)
+      @values.collect(&block)
+    end
+
+    def <<(value)
+      @values << value
+      self
+    end
+
 
     #-----------------------------------------------------------------------
     # set
@@ -3709,7 +3719,7 @@ class KBResultSet < Array
             raise "Invalid sort field" unless @filter.include?(f[0])
         end
 
-        super() { |a,b|
+        sorted = @values.sort{|a,b|
             x = []
             y = []
             sort_fields_arrs.each do |s|
@@ -3732,6 +3742,8 @@ class KBResultSet < Array
 
             x <=> y
         }
+
+        return self.class.new(@table, @filter, @filter_types, *sorted)
     end
 
     #-----------------------------------------------------------------------

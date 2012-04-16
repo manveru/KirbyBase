@@ -222,7 +222,7 @@ module KBTypeConversionsMixin
                 return true
             end
         when :Time
-            return Time.parse(s)    
+            return Time.parse(s)
         when :Date
             return Date.parse(s)
         when :DateTime
@@ -285,7 +285,7 @@ module KBTypeConversionsMixin
                  '&substitute;').gsub("|", '&pipe;')
             else
                 return value
-            end  
+            end
         when :Memo
             return value.filepath
         when :Blob
@@ -303,10 +303,10 @@ end
 module KBEncryptionMixin
     EN_STR = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' + \
      '0123456789.+-,$:|&;_ '
-    EN_STR_LEN = EN_STR.length
+    EN_STR_LEN = EN_STR.size
     EN_KEY1 = ")2VER8GE\"87-E\n"           #*** DO NOT CHANGE ***
     EN_KEY = EN_KEY1.unpack("u")[0]
-    EN_KEY_LEN = EN_KEY.length
+    EN_KEY_LEN = EN_KEY.size
 
 
     #-----------------------------------------------------------------------
@@ -457,12 +457,12 @@ class KirbyBase
         # You can delay index creation until the first time the index is
         # used.
         if @delay_index_creation
-        else    
+        else
             @engine.tables.each do |tbl|
                 @table_hash[tbl] = \
                  KBTable.create_called_from_database_instance(self, tbl,
                  File.join(@path, tbl.to_s + @ext))
-            end    
+            end
         end
     end
 
@@ -523,7 +523,7 @@ class KirbyBase
             return @table_hash[name]
         else
             @table_hash[name] = \
-             KBTable.create_called_from_database_instance(self, name, 
+             KBTable.create_called_from_database_instance(self, name,
               File.join(@path, name.to_s + @ext))
             return @table_hash[name]
         end
@@ -572,7 +572,7 @@ class KirbyBase
         end
         raise 'Duplicate field names are not allowed!' unless \
          temp_field_names == temp_field_names.uniq
-            
+
         temp_field_defs = []
         (0...t.field_defs.size).step(2) do |x|
             temp_field_defs << build_header_field_string(t.field_defs[x],
@@ -613,21 +613,21 @@ class KirbyBase
             if field_type_def.has_key?(:Key)
                 temp_field_def += ':Key->true'
             end
-            
+
             # Check for Index definition.
             if field_type_def.has_key?(:Index)
                 raise 'Invalid field type for index: %s' % temp_type \
-                 unless KBTable.valid_index_type?(temp_type)    
+                 unless KBTable.valid_index_type?(temp_type)
 
                 temp_field_def += ':Index->' + field_type_def[:Index].to_s
             end
-                 
+
             # Check for Default value definition.
             if field_type_def.has_key?(:Default)
                 raise 'Cannot set default value for this type: ' + \
                  '%s' % temp_type unless KBTable.valid_default_type?(
                  temp_type)
-                
+
                 unless field_type_def[:Default].nil?
                     raise 'Invalid default value ' + \
                      '%s for column %s' % [field_type_def[:Default],
@@ -637,18 +637,18 @@ class KirbyBase
                     temp_field_def += ':Default->' + \
                      convert_to_encoded_string(temp_type,
                      field_type_def[:Default])
-                end    
+                end
             end
-            
+
             # Check for Required definition.
             if field_type_def.has_key?(:Required)
                 raise 'Required must be true or false!' unless \
                  [true, false].include?(field_type_def[:Required])
-                
+
                 temp_field_def += \
                  ':Required->%s' % field_type_def[:Required]
             end
-            
+
             # Check for Lookup field, Link_many field, Calculated field
             # definition.
             if field_type_def.has_key?(:Lookup)
@@ -979,7 +979,7 @@ class KBEngine
         with_write_locked_table(table) do |fptr|
             encrypted, header_line = get_header_record(table, fptr)
             last_rec_no, rest_of_line = header_line.split('|', 2)
-            write_header_record(table, fptr, 
+            write_header_record(table, fptr,
              ['%06d' % 0, rest_of_line].join('|'))
             return true
         end
@@ -1070,7 +1070,7 @@ class KBEngine
             fptr.readline
 
             # Take all the recnos you want to get, add the file positions
-            # to them, and sort by file position, so that when we seek 
+            # to them, and sort by file position, so that when we seek
             # through the physical file we are going in ascending file
             # position order, which should be fastest.
             recnos.collect { |r| [recno_idx[r], r] }.sort.each do |r|
@@ -1116,7 +1116,7 @@ class KBEngine
     #-----------------------------------------------------------------------
     def line_to_rec(line, encrypted)
         line.chomp!
-        line_length = line.length
+        line_length = line.size
         line = unencrypt_str(line) if encrypted
         line.strip!
 
@@ -1166,7 +1166,7 @@ class KBEngine
                 # the file.
                 write_record(table, fptr, rec[:fpos],
                  ' ' * rec[:line_length])
-                if line.length > rec[:line_length]
+                if line.size > rec[:line_length]
                     fptr.seek(0, IO::SEEK_END)
                     new_fpos = fptr.tell
                     write_record(table, fptr, 'end', line)
@@ -1218,7 +1218,7 @@ class KBEngine
             else
                 header_rec = line.split('|')
             end
-            
+
             temp_fields = header_rec[col_index+3].split(':')
             temp_fields[1] = col_type.to_s
             header_rec[col_index+3] = temp_fields.join(':')
@@ -1262,7 +1262,7 @@ class KBEngine
             else
                 header_rec = line.split('|')
             end
-            
+
             temp_fields = header_rec[col_index+3].split(':')
             temp_fields[0] = new_col_name.to_s
             header_rec[col_index+3] = temp_fields.join(':')
@@ -1418,9 +1418,9 @@ class KBEngine
     def rename_table(old_tablename, new_tablename)
         old_full_path = File.join(@db.path, old_tablename.to_s + @db.ext)
         new_full_path = File.join(@db.path, new_tablename.to_s + @db.ext)
-        File.rename(old_full_path, new_full_path)    
+        File.rename(old_full_path, new_full_path)
     end
-    
+
     #-----------------------------------------------------------------------
     # add_index
     #-----------------------------------------------------------------------
@@ -1436,7 +1436,7 @@ class KBEngine
             else
                 header_rec = line.split('|')
             end
-            
+
             col_names.each do |c|
                 header_rec[table.field_names.index(c)+3] += \
                  ':Index->%d' % index_no
@@ -1480,13 +1480,13 @@ class KBEngine
             else
                 header_rec = line.split('|')
             end
-            
+
             col_names.each do |c|
                 temp_field_def = \
                  header_rec[table.field_names.index(c)+3].split(':')
                 temp_field_def = temp_field_def.delete_if {|x|
                     x =~ /Index->/
-                }    
+                }
                 header_rec[table.field_names.index(c)+3] = \
                  temp_field_def.join(':')
             end
@@ -1529,7 +1529,7 @@ class KBEngine
             else
                 header_rec = line.split('|')
             end
-            
+
             if header_rec[table.field_names.index(col_name)+3] =~ \
              /Default->/
                 hr_chunks = \
@@ -1549,13 +1549,13 @@ class KBEngine
                     end
                     header_rec[table.field_names.index(col_name)+3] = \
                      hr_chunks.join(':')
-                end              
+                end
             else
                 if value.nil?
                 else
                     header_rec[table.field_names.index(col_name)+3] += \
                      ':Default->%s' % value
-                end    
+                end
             end
 
             if line[0..0] == 'Z'
@@ -1596,7 +1596,7 @@ class KBEngine
             else
                 header_rec = line.split('|')
             end
-            
+
             if header_rec[table.field_names.index(col_name)+3
              ] =~ /Required->/
                 hr_chunks = \
@@ -1615,13 +1615,13 @@ class KBEngine
                     end
                     header_rec[table.field_names.index(col_name)+3] = \
                      hr_chunks.join(':')
-                end    
+                end
             else
                 if not required
                 else
                     header_rec[table.field_names.index(col_name)+3] += \
                      ':Required->%s' % required
-                end    
+                end
             end
 
             if line[0..0] == 'Z'
@@ -1748,7 +1748,7 @@ class KBEngine
             f.close
         end
     end
-    
+
 
     #-----------------------------------------------------------------------
     # PRIVATE METHODS
@@ -1944,9 +1944,9 @@ class KBTable
         when /:String|:Blob/
             return false unless value.respond_to?(:to_str)
         when :Memo
-            return false unless value.is_a?(KBMemo) 
+            return false unless value.is_a?(KBMemo)
         when :Blob
-            return false unless value.is_a?(KBBlob) 
+            return false unless value.is_a?(KBBlob)
         when :Boolean
             return false unless value.is_a?(TrueClass) or value.is_a?(
              FalseClass)
@@ -1955,7 +1955,7 @@ class KBTable
         when :Float
             return false unless value.respond_to?(:to_f)
         when :Time
-            return false unless value.is_a?(Time)     
+            return false unless value.is_a?(Time)
         when :Date
             return false unless value.is_a?(Date)
         when :DateTime
@@ -1963,7 +1963,7 @@ class KBTable
         when :YAML
             return false unless value.respond_to?(:to_yaml)
         end
-    
+
         return true
     end
 
@@ -2157,7 +2157,7 @@ class KBTable
          @field_types.include?(:Memo)
         input_rec.each { |r| r.write_to_file if r.is_a?(KBBlob) } if \
          @field_types.include?(:Blob)
-                        
+
         return new_recno
     end
 
@@ -2291,7 +2291,7 @@ class KBTable
              ).collect { |fn, ft| convert_to_encoded_string(ft,
              temp_rec.send(fn)) }, :fpos => rec.fpos,
              :line_length => rec.line_length }
- 
+
 
             # Update any associated blob/memo fields.
             temp_rec.each { |r| r.write_to_file if r.is_a?(KBMemo) } if \
@@ -2464,7 +2464,7 @@ class KBTable
 
        raise 'Invalid column name to rename: ' % old_col_name unless \
          @field_names.include?(old_col_name)
-        
+
        raise 'New column name already exists: ' % new_col_name if \
          @field_names.include?(new_col_name)
 
@@ -2498,7 +2498,7 @@ class KBTable
         raise "Cannot change type for recno column!" if col_name == :recno
         raise 'Invalid column name: ' % col_name unless \
          @field_names.include?(col_name)
-        
+
         raise 'Invalid field type: %s' % col_type unless \
          KBTable.valid_field_type?(col_type)
 
@@ -2538,7 +2538,7 @@ class KBTable
         raise "Invalid column name in 'after': #{after}" if after == :recno
 
         raise "Column name cannot be recno!" if col_name == :recno
-        
+
         raise "Column name already exists!" if @field_names.include?(
          col_name)
 
@@ -2572,7 +2572,7 @@ class KBTable
     # Drop a column from table.
     #
     # Make sure you are executing this method while in single-user mode
-    # (i.e. not running in client/server mode). 
+    # (i.e. not running in client/server mode).
     #
     # *col_name*:: Symbol of column name to add.
     #
@@ -2614,20 +2614,20 @@ class KBTable
         col_names.each do |c|
             raise "Invalid column name: #{c}" unless \
              @field_names.include?(c)
-            
+
             raise "recno column cannot be indexed!" if c == :recno
 
             raise "Column already indexed: #{c}" unless \
              @field_indexes[@field_names.index(c)].nil?
         end
-        
+
         last_index_no_used = 0
         @field_indexes.each do |i|
             next if i.nil?
             index_no = i[-1..-1].to_i
             last_index_no_used = index_no if index_no > last_index_no_used
         end
-        
+
         @db.engine.add_index(self, col_names, last_index_no_used+1)
 
         # Need to reinitialize the table instance and associated indexes.
@@ -2657,13 +2657,13 @@ class KBTable
         col_names.each do |c|
             raise "Invalid column name: #{c}" unless \
              @field_names.include?(c)
-            
+
             raise "recno column index cannot be dropped!" if c == :recno
 
             raise "Column not indexed: #{c}" if \
              @field_indexes[@field_names.index(c)].nil?
         end
-        
+
         @db.engine.drop_index(self, col_names)
 
         # Need to reinitialize the table instance and associated indexes.
@@ -2700,7 +2700,7 @@ class KBTable
          '%s' % @field_types.index(col_name) unless \
          KBTable.valid_default_type?(
           @field_types[@field_names.index(col_name)])
-        
+
         if value.nil?
             @db.engine.change_column_default_value(self, col_name, nil)
         else
@@ -2708,7 +2708,7 @@ class KBTable
              convert_to_encoded_string(
               @field_types[@field_names.index(col_name)], value))
         end
-            
+
         # Need to reinitialize the table instance and associated indexes.
         @db.engine.remove_recno_index(@name)
         @db.engine.remove_indexes(@name)
@@ -2717,7 +2717,7 @@ class KBTable
         create_indexes
         create_table_class unless @db.server?
     end
-    
+
     #-----------------------------------------------------------------------
     # change_column_required
     #-----------------------------------------------------------------------
@@ -2738,12 +2738,12 @@ class KBTable
 
         raise 'Invalid column name: ' % col_name unless \
          @field_names.include?(col_name)
-        
+
         raise 'Required must be either true or false!' unless \
          [true, false].include?(required)
-        
+
         @db.engine.change_column_required(self, col_name, required)
-            
+
         # Need to reinitialize the table instance and associated indexes.
         @db.engine.remove_recno_index(@name)
         @db.engine.remove_indexes(@name)
@@ -2752,7 +2752,7 @@ class KBTable
         create_indexes
         create_table_class unless @db.server?
     end
-    
+
     #-----------------------------------------------------------------------
     # total_recs
     #-----------------------------------------------------------------------
@@ -2799,16 +2799,16 @@ class KBTable
         # an select_by_index method doesn't hang around if it's index or
         # column has been dropped.
         methods.each do |m|
-            next if m == :select_by_recno_index
-            
+            next if m.to_s == 'select_by_recno_index'
+
             if m =~ /select_by_.*_index/
                 class << self; self end.send(:remove_method, m.to_sym)
-            end    
+            end
         end
 
         # Create the recno index.  A recno index always gets created even if
         # there are no user-defined indexes for the table.
-        @db.engine.init_recno_index(self) 
+        @db.engine.init_recno_index(self)
 
         # There can be up to 5 different indexes on a table.  Any of these
         # indexes can be single or compound.
@@ -2825,7 +2825,7 @@ class KBTable
             next if index_col_names.empty?
 
             # Create this index on the engine.
-            @db.engine.init_index(self, index_col_names) 
+            @db.engine.init_index(self, index_col_names)
 
             # For each index found, add an instance method for it so that
             # it can be used for #selects.
@@ -2841,7 +2841,7 @@ class KBTable
             END_OF_STRING
 
             instance_eval(select_meth_str) unless @db.server?
-           
+
             @idx_timestamps[index_col_names.join('_')] = nil
             @idx_arrs[index_col_names.join('_')] = nil
         end
@@ -2899,7 +2899,7 @@ class KBTable
                          ).respond_to?('select_by_%s_index' % key_field)
                             raise RuntimeError
                         end
-                        
+
                         get_meth_str = <<-END_OF_STRING
                         def #{field_name}
                             table = @tbl.db.get_table(:#{lookup_table})
@@ -2929,7 +2929,7 @@ class KBTable
                      'select_by_%s_index' % link_field)
                         raise RuntimeError
                     end
-                    
+
                     get_meth_str = <<-END_OF_STRING
                     def #{field_name}
                         table = @tbl.db.get_table(:#{link_table})
@@ -3062,7 +3062,7 @@ class KBTable
         @field_names[1..-1].each do |f|
             raise(ArgumentError,
              'A value for this field is required: %s' % f) if \
-             @field_requireds[@field_names.index(f)] and data[f].nil? 
+             @field_requireds[@field_names.index(f)] and data[f].nil?
         end
     end
 
@@ -3080,7 +3080,7 @@ class KBTable
              'You cannot input a value for this field: %s' % f) if \
              @field_extras[@field_names.index(f)].has_key?('Calculated') \
              or @field_extras[@field_names.index(f)].has_key?('Link_many') \
-              and not data[f].nil? 
+              and not data[f].nil?
         end
     end
 
@@ -3255,12 +3255,12 @@ class KBTable
                     @idx_timestamps[index_fields.join('_')] = \
                      @db.engine.get_index_timestamp(self, index_fields.join(
                      '_'))
-                     
+
                     @idx_arrs[index_fields.join('_')] = \
                      @db.engine.get_index(self, index_fields.join('_'))
                 end
             else
-                # If running single-user, grab the index array from the 
+                # If running single-user, grab the index array from the
                 # engine.
                 @idx_arrs[index_fields.join('_')] = \
                  @db.engine.get_index(self, index_fields.join('_'))
@@ -3360,14 +3360,14 @@ class KBMemo
         @filepath = filepath
         @contents = contents
     end
-    
+
     #-----------------------------------------------------------------------
     # read_from_file
     #-----------------------------------------------------------------------
     def read_from_file
         @contents = @db.engine.read_memo_file(@filepath)
     end
-    
+
     #-----------------------------------------------------------------------
     # write_to_file
     #-----------------------------------------------------------------------
@@ -3391,7 +3391,7 @@ class KBBlob
         @filepath = filepath
         @contents = contents
     end
-    
+
     #-----------------------------------------------------------------------
     # read_from_file
     #-----------------------------------------------------------------------
@@ -3473,10 +3473,10 @@ class KBIndex
         # Here's how we break out of the loop...
         rescue EOFError
         end
-    
+
         @last_update = Time.new
     end
-    
+
     #-----------------------------------------------------------------------
     # add_index_rec
     #-----------------------------------------------------------------------
@@ -3670,15 +3670,25 @@ class KBResultSet
         @values.dup
     end
 
-    def collect(&block)
-      @values.collect(&block)
-    end
-
     def <<(value)
       @values << value
       self
     end
 
+    include Enumerable
+
+    def each(&block)
+      @values.each(&block)
+    end
+
+    def size
+      @values.size
+    end
+    alias length size
+
+    def [](key)
+      @values[key]
+    end
 
     #-----------------------------------------------------------------------
     # set
@@ -3759,11 +3769,11 @@ class KBResultSet
         columns = [@filter].concat(result).transpose
 
         max_widths = columns.collect { |c|
-            c.max { |a,b| a.to_s.length <=> b.to_s.length }.to_s.length
+            c.max { |a,b| a.to_s.size <=> b.to_s.size }.to_s.size
         }
 
         row_dashes = '-' * (max_widths.inject {|sum, n| sum + n} +
-         delim.length * (max_widths.size - 1))
+         delim.size * (max_widths.size - 1))
 
         justify_hash = { :String => :ljust, :Integer => :rjust,
          :Float => :rjust, :Boolean => :ljust, :Date => :ljust,
@@ -3802,7 +3812,7 @@ end
 #---------------------------------------------------------------------------
 # KBNilClass
 #---------------------------------------------------------------------------
-class KBNilClass 
+class KBNilClass
     include Comparable
 
     class << self

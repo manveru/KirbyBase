@@ -82,7 +82,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl = @db.create_table(:plane, :name, :String, :speed, :Integer
          ) { |t| t.encrypt = @encrypted }
 
-        assert_equal(1, tbl.insert('Spitfire', 500)) 
+        assert_equal(1, tbl.insert('Spitfire', 500))
     end
 
     def test_insert_002
@@ -90,7 +90,7 @@ class TestTableLocal < Test::Unit::TestCase
          ) { |t| t.encrypt = @encrypted }
         tbl.insert('Spitfire', 500)
 
-        assert_equal([1, 'Spitfire', 500], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', 500], tbl[1].to_a)
     end
 
     def test_insert_003
@@ -98,7 +98,7 @@ class TestTableLocal < Test::Unit::TestCase
          ) { |t| t.encrypt = @encrypted }
         tbl.insert(:name => 'Spitfire', :speed => 500)
 
-        assert_equal([1, 'Spitfire', 500], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', 500], tbl[1].to_a)
     end
 
     def test_insert_004
@@ -106,7 +106,7 @@ class TestTableLocal < Test::Unit::TestCase
          ) { |t| t.encrypt = @encrypted }
         tbl.insert { |r| r.name = 'Spitfire'; r.speed = 500 }
 
-        assert_equal([1, 'Spitfire', 500], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', 500], tbl[1].to_a)
     end
 
     def test_insert_005
@@ -114,7 +114,7 @@ class TestTableLocal < Test::Unit::TestCase
          ) { |t| t.encrypt = @encrypted }
         tbl.insert('Spitfire', nil)
 
-        assert_equal([1, 'Spitfire', nil], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', nil], tbl[1].to_a)
     end
 
     def test_insert_006
@@ -123,7 +123,7 @@ class TestTableLocal < Test::Unit::TestCase
          t.encrypt = @encrypted }
         tbl.insert('Spitfire', nil)
 
-        assert_equal([1, 'Spitfire', nil], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', nil], tbl[1].to_a)
     end
 
     def test_insert_007
@@ -132,7 +132,7 @@ class TestTableLocal < Test::Unit::TestCase
          ) { |t| t.encrypt = @encrypted }
         tbl.insert(:name => 'Spitfire')
 
-        assert_equal([1, 'Spitfire', 300], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', 300], tbl[1].to_a)
     end
 
     def test_insert_008
@@ -141,7 +141,7 @@ class TestTableLocal < Test::Unit::TestCase
          t.encrypt = @encrypted }
         tbl.insert('Spitfire', 500)
 
-        assert_equal([1, 'Spitfire', 500], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', 500], tbl[1].to_a)
     end
 
     def test_insert_010
@@ -171,7 +171,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('Spitfire', 500)
         tbl.update(:speed => 495) { |r| r.recno == 1 }
 
-        assert_equal([1, 'Spitfire', 495], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', 495], tbl[1].to_a)
     end
 
     def test_update_002
@@ -196,7 +196,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('Spitfire', 500)
         tbl[1] = {:speed => 495}
 
-        assert_equal([1, 'Spitfire', 495], tbl[1].to_a) 
+        assert_equal([1, 'Spitfire', 495], tbl[1].to_a)
     end
 
     def test_update_005
@@ -240,7 +240,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('Spitfire', 500)
         tbl.delete { |r| r.recno == 1 }
 
-        assert_equal([], tbl[1].to_a) 
+        assert_equal([], tbl[1].to_a)
     end
 
     def test_delete_002
@@ -249,7 +249,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('Spitfire', 500)
         tbl.delete { |r| r.name == 'Spitfire' }
 
-        assert_equal([], tbl[1].to_a) 
+        assert_equal([], tbl[1].to_a)
     end
 
     def test_delete_003
@@ -259,7 +259,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('P-51', 600)
         tbl.delete { |r| r.recno == 1 }
 
-        assert_equal(1, tbl.select.size) 
+        assert_equal(1, tbl.select.size)
     end
 
     def test_clear_001
@@ -269,7 +269,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('P-51', 600)
         tbl.clear
 
-        assert_equal(0, tbl.select.size) 
+        assert_equal(0, tbl.select.size)
     end
 
     def test_clear_002
@@ -279,7 +279,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('P-51', 600)
         tbl.clear(true)
 
-        assert_equal(0, tbl.last_rec_no) 
+        assert_equal(0, tbl.last_rec_no)
     end
 
     def test_clear_003
@@ -288,7 +288,7 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.insert('Spitfire', 500)
         tbl.insert('P-51', 600)
 
-        assert_equal(2, tbl.delete_all) 
+        assert_equal(2, tbl.delete_all)
     end
 
     def test_add_column_001
@@ -319,8 +319,8 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.add_column(:two, {:DataType => :Integer, :Index => 1})
         tbl.insert('bob', 3)
         tbl.insert('sue', 5)
-        
-        assert_equal([2, 'sue', 5], 
+
+        assert_equal([2, 'sue', 5],
          tbl.select_by_two_index { |r| r.two > 4}.first.to_a)
     end
 
@@ -331,12 +331,12 @@ class TestTableLocal < Test::Unit::TestCase
 
         assert_equal([:recno, :one, :two, :three], tbl.field_names)
     end
-    
+
     def test_drop_column_001
         tbl = @db.create_table(:empty, :one, :String, :two, :Integer
          ) { |t| t.encrypt = @encrypted }
         tbl.drop_column(:one)
-            
+
         assert_equal([:recno, :two], tbl.field_names)
     end
 
@@ -344,18 +344,18 @@ class TestTableLocal < Test::Unit::TestCase
         tbl = @db.create_table(:empty, :one, :String, :two, :Integer
          ) { |t| t.encrypt = @encrypted }
         tbl.drop_column(:two)
-            
+
         assert_raise(RuntimeError) { tbl.drop_column(:three) }
     end
 
     def test_drop_column_003
-        tbl = @db.create_table(:empty, :one, {:DataType => :String, 
+        tbl = @db.create_table(:empty, :one, {:DataType => :String,
          :Index => 1}, :two, :Integer) { |t| t.encrypt = @encrypted }
         tbl.drop_column(:one)
-            
+
         assert_raise(NoMethodError) { tbl.select_by_one_index { true } }
     end
-    
+
     def test_rename_column_001
         tbl = @db.create_table(:empty, :one, :String) { |t|
          t.encrypt = @encrypted }
@@ -388,163 +388,163 @@ class TestTableLocal < Test::Unit::TestCase
         tbl = @db.create_table(:empty, :one, :String) { |t|
          t.encrypt = @encrypted }
         tbl.change_column_type(:one, :Integer)
-        
+
         assert_equal([:Integer, :Integer], tbl.field_types)
     end
-    
+
     def test_change_column_type_002
         tbl = @db.create_table(:empty, :one, :String) { |t|
          t.encrypt = @encrypted }
 
-        assert_raise(RuntimeError) {tbl.change_column_type(:one, :integer)} 
+        assert_raise(RuntimeError) {tbl.change_column_type(:one, :integer)}
     end
-    
+
     def test_change_column_type_003
         tbl = @db.create_table(:empty, :one, { :DataType => :String,
          :Required => true}) { |t| t.encrypt = @encrypted }
         tbl.change_column_type(:one, :Integer)
-        
-        assert_equal([[:Integer, :Integer], [false, true]], 
+
+        assert_equal([[:Integer, :Integer], [false, true]],
          [tbl.field_types, tbl.field_requireds])
     end
-    
+
     def test_calculated_field_001
         tbl = @db.create_table(:empty, :one, :Integer, :two, :Integer,
          :three, { :DataType => :Integer, :Calculated => 'one + two' }
          ) { |t| t.encrypt = @encrypted }
         tbl.insert(1, 2, nil)
-        
-        assert_equal(3, tbl[1].three) 
+
+        assert_equal(3, tbl[1].three)
     end
 
     def test_calculated_field_002
         tbl = @db.create_table(:empty, :one, :Integer, :two, :Integer,
          :three, { :DataType => :Integer, :Calculated => 'one + two' }
          ) { |t| t.encrypt = @encrypted }
-        
-        assert_raise(ArgumentError) { tbl.insert(1, 2, 3) } 
+
+        assert_raise(ArgumentError) { tbl.insert(1, 2, 3) }
     end
 
     def test_column_required_001
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => true}) { |t|
          t.encrypt = @encrypted }
-         
-        assert_raise(ArgumentError) { tbl.insert('one', nil) } 
+
+        assert_raise(ArgumentError) { tbl.insert('one', nil) }
     end
 
     def test_column_required_002
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => true}) { |t|
          t.encrypt = @encrypted }
-         
-        assert_raise(ArgumentError) { tbl.insert(:one => 'one') } 
+
+        assert_raise(ArgumentError) { tbl.insert(:one => 'one') }
     end
 
     def test_column_required_003
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => false}) { |t|
          t.encrypt = @encrypted }
-        tbl.insert(:one => 'one') 
-        
-        assert_equal([1, 'one', nil], tbl[1].to_a) 
+        tbl.insert(:one => 'one')
+
+        assert_equal([1, 'one', nil], tbl[1].to_a)
     end
 
     def test_column_required_004
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => true, :Default => 'bob'}
          ) { |t| t.encrypt = @encrypted }
-        tbl.insert(:one => 'one') 
-        
-        assert_equal([1, 'one', 'bob'], tbl[1].to_a) 
+        tbl.insert(:one => 'one')
+
+        assert_equal([1, 'one', 'bob'], tbl[1].to_a)
     end
 
     def test_column_required_005
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => true}) { |t|
          t.encrypt = @encrypted }
-        tbl.insert('one', 'two') 
-        
+        tbl.insert('one', 'two')
+
         assert_raise(ArgumentError) {
-         tbl.update('one', nil) { |r| r.recno == 1 } } 
+         tbl.update('one', nil) { |r| r.recno == 1 } }
     end
 
     def test_column_required_006
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => true}) { |t|
          t.encrypt = @encrypted }
-        tbl.insert('one', 'two') 
-        
+        tbl.insert('one', 'two')
+
         assert_raise(ArgumentError) {
-         tbl.update(:two => nil) { |r| r.recno == 1 } } 
+         tbl.update(:two => nil) { |r| r.recno == 1 } }
     end
 
     def test_column_required_007
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => true, :Default => 'three'}
          ) { |t| t.encrypt = @encrypted }
-         
-        assert_raise(ArgumentError) { tbl.insert('one', nil) } 
+
+        assert_raise(ArgumentError) { tbl.insert('one', nil) }
     end
 
     def test_change_column_required_001
         tbl = @db.create_table(:empty, :one, :String, :two, :String
          ) { |t| t.encrypt = @encrypted }
         tbl.change_column_required(:two, true)
-        
-        assert_raise(ArgumentError) { tbl.insert(:one => 'one') } 
+
+        assert_raise(ArgumentError) { tbl.insert(:one => 'one') }
     end
 
     def test_change_column_required_002
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Required => true}) { |t|
          t.encrypt = @encrypted }
         tbl.change_column_required(:two, false)
-        
-        assert_equal(1, tbl.insert(:one => 'one')) 
+
+        assert_equal(1, tbl.insert(:one => 'one'))
     end
 
     def test_column_default_001
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Default => 'two'}) { |t|
          t.encrypt = @encrypted }
         tbl.insert('one', nil)
-        assert_equal([1, 'one', nil], tbl[1].to_a) 
+        assert_equal([1, 'one', nil], tbl[1].to_a)
     end
 
     def test_column_default_002
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Default => 'two'}) { |t|
          t.encrypt = @encrypted }
         tbl.insert('one', 'not two')
 
-        assert_equal([1, 'one', 'not two'], tbl[1].to_a) 
+        assert_equal([1, 'one', 'not two'], tbl[1].to_a)
     end
 
     def test_column_default_003
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Default => 'two'}) { |t|
          t.encrypt = @encrypted }
         tbl.insert(:one => 'one')
 
-        assert_equal([1, 'one', 'two'], tbl[1].to_a) 
+        assert_equal([1, 'one', 'two'], tbl[1].to_a)
     end
 
     def test_column_default_004
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Default => 'two'}) { |t|
          t.encrypt = @encrypted }
         tbl.insert(Struct.new(:one, :two).new('one'))
 
-        assert_equal([1, 'one', nil], tbl[1].to_a) 
+        assert_equal([1, 'one', nil], tbl[1].to_a)
     end
 
     def test_column_default_005
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Default => 'two', :Required => true}) { |t|
          t.encrypt = @encrypted }
 
-        assert_raise(ArgumentError) { tbl.insert('one', nil) } 
+        assert_raise(ArgumentError) { tbl.insert('one', nil) }
     end
 
     def test_change_column_default_value_001
@@ -552,43 +552,43 @@ class TestTableLocal < Test::Unit::TestCase
          ) { |t| t.encrypt = @encrypted }
         tbl.change_column_default_value(:two, 'two')
         tbl.insert(:one => 'one')
-        
-        assert_equal([1, 'one', 'two'], tbl[1].to_a)        
+
+        assert_equal([1, 'one', 'two'], tbl[1].to_a)
     end
 
     def test_change_column_default_value_002
-        tbl = @db.create_table(:empty, :one, :String, :two, 
+        tbl = @db.create_table(:empty, :one, :String, :two,
          {:DataType => :String, :Default => 'two'}) { |t|
          t.encrypt = @encrypted }
         tbl.change_column_default_value(:two, nil)
         tbl.insert(:one => 'one')
-        
-        assert_equal([1, 'one', nil], tbl[1].to_a)        
+
+        assert_equal([1, 'one', nil], tbl[1].to_a)
     end
-    
+
     def test_index_001
         tbl = @db.create_table(:empty, :one, {:DataType => :String,
          :Index => 1}) { |t| t.encrypt = @encrypted }
         tbl.insert('one')
         tbl.insert('two')
-        
+
         assert_equal(1, tbl.select_by_one_index {|r| r.one == 'one'}.size)
     end
-    
+
     def test_index_002
         tbl = @db.create_table(:empty, :one, {:DataType => :String,
-         :Index => 1}, :two, :String, :three, 
+         :Index => 1}, :two, :String, :three,
          {:DataType => :Integer, :Index => 1}) { |t|
          t.encrypt = @encrypted }
         tbl.insert('one', 'two', 3)
         tbl.insert('four', 'five', 6)
-        
-        assert_equal(1, tbl.select_by_one_three_index {|r| 
+
+        assert_equal(1, tbl.select_by_one_three_index {|r|
          r.one == 'four' and r.three == 6}.size)
     end
-    
+
     def test_index_003
-        assert_raise(RuntimeError) {@db.create_table(:empty, :one, 
+        assert_raise(RuntimeError) {@db.create_table(:empty, :one,
          {:DataType => :YAML, :Index => 1}) { |t| t.encrypt = @encrypted }}
     end
 
@@ -597,8 +597,8 @@ class TestTableLocal < Test::Unit::TestCase
          ) { |t| t.encrypt = @encrypted }
         tbl.insert('John', 'Doe')
         tbl.add_index(:first, :last)
-        
-        assert_equal(1, tbl.select_by_first_last_index {|r| 
+
+        assert_equal(1, tbl.select_by_first_last_index {|r|
          r.first == 'John' and r.last == 'Doe'}.size)
     end
 
@@ -729,18 +729,18 @@ class TestTableLocal < Test::Unit::TestCase
 
     class Foobar
         attr_accessor(:recno, :one)
-     
+
         def Foobar.kb_create(recno, one)
             Foobar.new do |x|
                 x.recno = recno
                 x.one = one
             end
         end
-    
+
         def initialize(&block)
             instance_eval(&block)
         end
-    end 
+    end
 
     def test_record_class_001
         tbl = @db.create_table(:empty, :one, :String) {|t|
@@ -766,38 +766,38 @@ class TestTableLocal < Test::Unit::TestCase
         tbl.update(:one => ['two', 3]) { |r| r.recno == 1 }
         assert_equal(['two', 3], tbl[1].one)
     end
-    
+
     def test_nil_values_001
         tbl = @db.create_table(:nil_tests, :nil_value, :Integer,
          :conditional, :Integer)
         tbl.insert(nil, 100)
-         
+
         recs = []
-         
+
         assert_nothing_raised {rec = tbl.select {|r| r.nil_value > 100}}
-        assert_equal 0, recs.length
-        
-        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 and 
+        assert_equal 0, recs.size
+
+        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 and
          r.conditional > 100}}
-        assert_equal 0, recs.length
+        assert_equal 0, recs.size
 
-        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 or 
+        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 or
          r.conditional > 100}}
-        assert_equal 0, recs.length
+        assert_equal 0, recs.size
 
-        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 and 
+        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 and
          r.conditional == 100}}
-        assert_equal 0, recs.length
+        assert_equal 0, recs.size
 
-        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 or 
+        assert_nothing_raised {recs = tbl.select {|r| r.nil_value > 100 or
          r.conditional == 100}}
-        assert_equal 1, recs.length
+        assert_equal 1, recs.size
 
         assert_nothing_raised {recs = tbl.select {|r| r.nil_value.kb_nil?}}
-        assert_equal 1, recs.length
+        assert_equal 1, recs.size
 
         assert_nothing_raised {recs = tbl.select {|r| r.nil_value == kb_nil}}
-        assert_equal 1, recs.length
+        assert_equal 1, recs.size
     end
 end
 
